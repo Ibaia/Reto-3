@@ -8,7 +8,6 @@ class usuarioClass{
 	protected $nickName;
 	protected $residecia;
 	protected $email;
-	protected $numTel;
 	
 	//Getters y setters
 	
@@ -82,16 +81,5 @@ class usuarioClass{
     {
         $this->email = $email;
     }
-    
-    
-    //Numero de telefono
-    public function getNumTel()
-    {
-        return $this->numTel;
-    }
-    
-   	public function setNumTel ($numTel)
-    {
-        $this->contrasenia = $contrasenia;
-    }
+
 }

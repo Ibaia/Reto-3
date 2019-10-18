@@ -7,3 +7,4 @@ class connect_data
     public $passbbdd='';
     public $ddbbname='reto3';
 }
+?>

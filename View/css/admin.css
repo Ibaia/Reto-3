@@ -1,0 +1,20 @@
+h1{
+    text-align: center;
+    border-style: solid;
+}
+
+.buttons{
+    text-align: center;
+    margin: 50px;
+    
+}
+.buttons>button{
+    text-align: center;
+    margin: 50px;
+   
+}
+.container{
+    text-align: center;
+    border-style: solid;
+}
+

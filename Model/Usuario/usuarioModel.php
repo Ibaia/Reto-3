@@ -1,5 +1,5 @@
 <?php
-include_once ("connect_data.php");
+include_once ("../model/connect_data.php");
 include_once("usuarioClass.php");
 
 class usuarioModel extends usuarioClass{
@@ -7,7 +7,29 @@ class usuarioModel extends usuarioClass{
 	private $link;
 	private $list= array();
 	
-	
+	public function OpenConnect()
+{
+    $konDat=new connect_data();
+    try
+    {
+         $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
+         // mysqli klaseko link objetua sortzen da dagokion konexio datuekin
+         // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexión. 
+    }
+    catch(Exception $e)
+    {
+    echo $e->getMessage();
+    }
+        $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta 
+        //                  //databasearen artean UTF -8 erabiltzera datuak trukatzeko
+}                   
+ 
+ public function CloseConnect()
+ {
+     mysqli_close ($this->link);
+ }
+ 
+ 
 	private function getList(){
 		return $this->list;
 	}
@@ -25,20 +47,19 @@ class usuarioModel extends usuarioClass{
 			
 			$user= new usuarioClass();
 			
-			$user->setIdUsuario($row['idUsuario']);
+			$user->setIdUsuario($row['id']);
 			$user->setNombre($row['nombre']);
 			$user->setContrasenia($row['contrasenia']);
 			$user->setNickName($row['nickName']);
 			$user->setResidencia($row['residencia']);
 			$user->setEmail($row['email']);
-			$user->setNumTel($row['numTel']);
 			
-			 array_push($this->list, $nuevo);
+			 array_push($this->list, $user);
 		}
 		        mysqli_free_result($result);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
-	
+	/*
 	//Insert Usuarios
 	public function insert(){
         
@@ -109,5 +130,19 @@ class usuarioModel extends usuarioClass{
         }
         
         $this->CloseConnect();
+    }*/
+    function getListJsonString() {//if Class attributes PROTECTED
+        
+        // returns the list of objects in a srting with JSON format
+        // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
+        $arr=array();
+        
+        foreach ($this->list as $object)
+        {
+            $vars = get_object_vars($object);
+            
+            array_push($arr, $vars);
+        }
+        return json_encode($arr);
     }
 }
