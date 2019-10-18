@@ -48,14 +48,18 @@ class reservaModel extends reservaClass{
 			$reserva= new reservaClass();
 			
 			$reserva->setIdReserva($row{'id'});
-			$reserva->setIdOrdenador($row[idOrdenador]);
+			$reserva->setIdOrdenador($row['idOrdenador']);
+			$reserva->setIdUsuario($row['idUsuario']);
+			$reserva->setFechaReserva($row['fechaReserva']);
+			$reserva->setFechaUso($row['fechaUso']);
 
 			
-			 array_push($this->list, $user);
+			 array_push($this->list, $reserva);
 		}
 		        mysqli_free_result($result);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
+	
 	/*
 	//Insert Usuarios
 	public function insert(){

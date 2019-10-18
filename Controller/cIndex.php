@@ -1,6 +1,6 @@
 <?php
 
-include_once ("../model/Usuario/reservaoModel.php");
+include_once ("../model/Usuario/reservaModel.php");
 
 $reserva= new reservaClass();
 $reserva->setList(); 
