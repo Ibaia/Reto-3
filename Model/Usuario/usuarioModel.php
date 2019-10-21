@@ -1,5 +1,5 @@
 <?php
-include_once ("../model/connect_data.php");
+include_once ("C:\Users\ikaslea\Desktop\PHP\Reto 3\Model\connect_data.php");
 include_once("usuarioClass.php");
 
 class usuarioModel extends usuarioClass{
@@ -64,6 +64,8 @@ class usuarioModel extends usuarioClass{
 	public function insert(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        
         
         $nombreInsert=$this->getNombre();
 		$contraseniaInsert=$this->getContrasenia();
