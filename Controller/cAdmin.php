@@ -1,6 +1,6 @@
 <?php
 
-include_once ("../model/Usuario/usuarioModel.php");
+include_once ("../Model/Usuario/usuarioModel.php");
 
 $usuario= new usuarioModel();
 $usuario->setList(); 

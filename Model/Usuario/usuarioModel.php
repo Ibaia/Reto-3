@@ -1,5 +1,5 @@
 <?php
-include_once ("../model/connect_data.php");
+include_once ("C:\Users\ikaslea\Desktop\PHP\Reto 3\Model\connect_data.php");
 include_once("usuarioClass.php");
 
 class usuarioModel extends usuarioClass{
@@ -59,20 +59,21 @@ class usuarioModel extends usuarioClass{
 		        mysqli_free_result($result);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
-	/*
+	
 	//Insert Usuarios
 	public function insert(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        $nombreInsert=$this->getTituloPelicula();
+        
+        
+        $nombreInsert=$this->getNombre();
 		$contraseniaInsert=$this->getContrasenia();
 		$nickNameInsert=$this->getNickName();
 		$residenciaInsert=$this->getResidencia();
 		$emailInsert=$this->getEmail();
-		$numTelInsert=$this->getNumTel();
 
-        $sql="CALL spInsertUser('$nombreInsert','$contraseniaInsert','$nickNameInsert','$residenciaInsert','$emailInsert',$numTelInsert)";
+        $sql="CALL spInsertUser('$nombreInsert','$contraseniaInsert','$nickNameInsert','$residenciaInsert','$emailInsert')";
         
         $numFilas=$this->link->query($sql);
         
@@ -84,7 +85,7 @@ class usuarioModel extends usuarioClass{
         
         $this->CloseConnect();
     }
-	
+	/*
 	//Delete Usuarios
    	public function delete(){
         
