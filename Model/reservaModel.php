@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/Reto 3/Model/connect_data.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/connect_data.php");
 include_once("reservaClass.php");
 
 class reservaModel extends reservaClass{

@@ -38,6 +38,7 @@ $(document).ready(function(){
 	    }
 	});
 	
+	
 $.ajax({
 	    type:"GET",
 	    url: "../controller/cReserva.php", 
@@ -56,7 +57,6 @@ $.ajax({
 
 	    	newRow += '<tr>'
 	    	newRow += '<td class="col">'+info.idReserva+'</td>'
-	    	newRow += '<td class="col">'+info.idOrdenador+'</td>'
 	    	newRow += '<td class="col">'+info.fechaReserva+'</td>'
 	    	newRow += '<td class="col">'+info.fechaUso+'</td>'
 	    	newRow += '<td class="col">'+info.nombreUsuario+'</td>'

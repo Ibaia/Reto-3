@@ -11,5 +11,4 @@ $reserva->setPrecioTotal($row['precioTotal']);
 
 $reserva->insert();
 
-echo 
 ?>

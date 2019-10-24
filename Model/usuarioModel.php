@@ -1,7 +1,7 @@
 <?php
 //phpinfo();
 //exit();
-include_once ($_SERVER['DOCUMENT_ROOT']."/Reto 3/Model/connect_data.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/connect_data.php");
 include_once("usuarioClass.php");
 /*$konDat=new connect_data();
 print_r($konDat);
