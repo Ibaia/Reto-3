@@ -2,8 +2,6 @@
 class reservaClass{
 	
 	protected $idReserva;
-	protected $idOrdenador;
-	protected $idUsuario;
 	protected $fechaReserva;
 	protected $fechaUso;
 	protected $nombreUsuario;
@@ -23,16 +21,6 @@ class reservaClass{
    	public function setIdReserva($idReserva)
     {
         $this->idReserva = $idReserva;
-    }
- 
-    //ID Ordenador
-    public function getIdOrdenador()
-    {
-        return $this->idOrdenador;
-    }
-   	public function setIdOrdenador($idOrdenador)
-    {
-        $this->idOrdenador = $idOrdenador;
     }
   
     //Fecha Reserva

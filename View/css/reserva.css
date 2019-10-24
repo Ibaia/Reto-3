@@ -1,0 +1,245 @@
+body{
+  background-color: black;
+  background-image: url('../img/empresauiros_logo.png');
+  background-size: cover;
+}
+
+.titulo_web{
+  margin-left: 13%;
+  width: 70%;
+}
+
+/* logo */
+.logo{
+  width: 110px;
+}
+
+/* elementos de la parte superior del container: título, fecha, dropdown */
+#nav-info{
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  margin-top: 2%;
+}
+
+/* los ordenadores */
+.nav{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+/* cada caja de los ordenadores */
+.text{
+  margin-top: 3%;
+  margin-right: 2%;
+  margin-left: 2%;
+  /* margin-right: 1%; */
+  text-align: center;
+  /* width: 20% !important; */
+  display: inline-block;
+  border: solid black;
+  border-radius: 5%;
+}
+
+/* imagen de los ordenadores */
+.text>a>.pcGaming{
+  width: 50% !important;
+}
+
+/* dropdown con scroll (a partir de 200px de altura esconde el resto de dropdown para crear el scroll)*/
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+}
+
+.btn-group{
+  margin-left: 10%;
+}
+
+/* centra los elementos del dropdown */
+.btn-group>ul>li{
+  text-align: center;
+}
+
+/* elimina la decoración de los link del dropdown */
+.btn-group>ul>li>a{
+  text-decoration:none;
+  color: black;
+}
+
+/* imagen para eliminar los elemntos del dropdown */
+.btn-group>ul>li>a>img{
+  width: 6%;
+  margin-bottom: 2%;
+  margin-left: 2%;
+}
+
+/* botón 'reservar' */
+.bottom{
+  margin-top: 3%;
+  text-align: center;
+}
+
+/* código css para el input type:date (pillado de internet) */
+[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+  }
+  [type="date"]::-webkit-inner-spin-button {
+    display: none;
+  }
+  [type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+  
+  /* container custom styles */
+  .container{
+    padding: 4em;
+    border-radius: 15px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background: rgba(255, 255, 255, 0.575);
+    font: 13px/1.4 Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+  }
+
+  /* título del nav */
+  h5{
+    margin-right: 2%;
+  }
+  
+  /* input type:date (añade sombras y redondea los bordes)*/
+  input{
+    border: 1px solid #c4c4c4;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 3px 5px;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
+    width: 190px;
+  }
+
+  /* styles entre 800px y 1000px de anchura */
+  @media screen and (min-width: 800px) and (max-width: 1000px) {
+    .logo{
+      width: 90px;
+    }
+    .titulo_web{
+      margin-left: 0%;
+      width: 70%;
+    }
+    .form-control{
+      width: 40%;
+    }
+    /* centra la imagen de fondo */
+    body{
+      background-position: center;
+    }
+    /* centra el texto del nav */
+    nav>#nav-tab{
+      text-align: center;
+    }
+    /* aparece un texto enre el logo y el botón menú */
+    /* .titulo_web{
+      font-size: 300%;
+      color: white;
+      font-weight: bold;
+      -webkit-text-stroke: 2px black; /* crea el contorno de las letras 
+    } */
+    /* orden de los elemntos del nav mediante grid */
+    .nav{
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+    }
+    h5{
+      grid-column: 1/3;
+      font-size: 146%;
+    }
+    .date{
+      grid-column: 3/5;
+    }
+    .btn-group{
+      grid-column: 2/4;
+      margin-left: 0%;
+    }
+    #date{
+      width: 65%;
+    }
+    #dateButton{
+      width: 30%;
+    }
+    #nav-info{
+      display: grid;
+      grid-template-columns: auto auto auto;
+    }
+    .text{
+      width: 95% !important;
+    }
+    .text>.pcGaming{
+      width: 100% !important;
+    } 
+    
+  
+  
+  }
+  /* styles hasta 800px de anchura */
+  @media screen and (max-width: 800px) {
+    .logo{
+      width: 70px;
+    }
+    .titulo_web{
+      margin-left: 0%;
+      width: 70%;
+    }
+    /* centra la imagen de fondo */
+    body{
+      background-position: center;
+    }
+    /* aparece un texto enre el logo y el botón menú */
+    /* .titulo_web{
+      font-size: 100%;
+      color: white;
+      font-weight: bold;
+      -webkit-text-stroke: 1px black; /* contorno de las letras 
+    } */
+    .container{
+      width: 95%;
+    }
+    /* aparece el titulo en la barra del nav */
+    .titulo_web{
+      display: block;
+    }
+    /* centra el texto del nav */
+    nav>#nav-tab{
+      text-align: center;
+    }
+    #date{
+      width: 60%;
+    }
+    #dateButton{
+      width: 30%;
+    }
+    /* reorganiza los ordenadores en 2 columnas mediante grid */
+    #nav-info{
+      width: 100%;
+      display: grid;
+      grid-template-columns: auto auto;
+    }
+    h5{
+      font-size: 130%;
+    }
+    /* reorganiza los elemntos del nav en una columna mediante grid */
+    .nav{
+      display: grid;
+      grid-template-columns: 99%;
+    }
+    .text{
+      width: 95% !important;
+    }
+    .text>.pcGaming{
+      width: 100% !important;
+    } 
+    .btn-group{
+      margin-left: 0%;
+    }
+  
+  
+  }
+

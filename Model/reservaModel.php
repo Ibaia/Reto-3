@@ -50,8 +50,6 @@ class reservaModel extends reservaClass{
 			
 			$reserva= new reservaClass();
 			
-			$reserva->setIdReserva($row{'id'});
-			$reserva->setIdOrdenador($row['idOrdenador']);
 			$reserva->setFechaReserva($row['fechaReserva']);
 			$reserva->setFechaUso($row['fechaUso']);
 			$reserva->setNombreUsuario($row['nombreUsuario']);
@@ -74,14 +72,14 @@ class reservaModel extends reservaClass{
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        $nombreInsert=$this->getTituloPelicula();
-		$contraseniaInsert=$this->getContrasenia();
-		$nickNameInsert=$this->getNickName();
-		$residenciaInsert=$this->getResidencia();
-		$emailInsert=$this->getEmail();
-		$numTelInsert=$this->getNumTel();
+			$reservaFecha->setFechaUso($row['fechaUso']);
+			$reservaNombre->setNombreUsuario($row['nombreUsuario']);
+			$reservaApellido->setApellidoUsuario($row['apellidoUsuario']);
+			$reservaNumTel->setNumTel($row['numTel']);
+			$reservaDni->setDni($row['DNI']);
+			$reservaPrecio->setPrecioTotal($row['precioTotal']);
 
-        $sql="CALL spInsertUser('$nombreInsert','$contraseniaInsert','$nickNameInsert','$residenciaInsert','$emailInsert',$numTelInsert)";
+        $sql="CALL spInsertUser('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
         
         $numFilas=$this->link->query($sql);
         
