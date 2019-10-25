@@ -59,6 +59,7 @@ $(document).ready(function(){
 	        alert("An error occured: " + xhr.status + " " + xhr.statusText);
 	    }
 	});
+	//Fin de ajax usuarios
 
 	 //Boton delete
 	function deleteFunction(id) {
@@ -83,6 +84,7 @@ $(document).ready(function(){
 	  		
 	}
 
+	//Rellenar los datos para llamar al controlador y hacer el update
 	$("#btnExecUpdate").click(function(){
 
 		var id=$('#idUpdate').val();
@@ -139,7 +141,7 @@ $.ajax({
 	    	newRow += '<td class="col">'+info.dni+'</td>'
 	    	newRow += '<td class="col">'+info.precioTotal+'&#8364;</td>'
 	    	newRow += "<td class='col'><button class='btnDeleteReserva btn-danger' value='"+info.idReserva+"'><i class='fas fa-trash-alt'></i></button></td>"
-            newRow += "<td class='col'><button class='btnUpdateReserva btn-success' value='"+info.idReserva+"' data-toggle='modal' data-target='#update'><i class='fas fa-edit'></i></button></td>"
+            newRow += "<td class='col'><button class='btnUpdateReserva btn-success' value='"+info.idReserva+"' data-toggle='modal' data-target='#updateReserva'><i class='fas fa-edit'></i></button></td>"
 	    	});
 	    	newRow += '<tr>'
 	    		
@@ -153,18 +155,22 @@ $.ajax({
 	    	//Modal reserva
 	        $(".btnUpdateReserva").click(function(){
 
-	        	$('#idReserva').val($(this).closest("tr").children().eq(0).text());
-				$('#nombreUsuarioReserva').val($(this).closest("tr").children().eq(1).text());
-				$('#apellidoUsuarioReserva').val($(this).closest("tr").children().eq(2).text());
-				$('#numTelReserva').val($(this).closest("tr").children().eq(3).text());
-				$('#dniReserva').val($(this).closest("tr").children().eq(4).text());
-				$('#precioReserva').val($(this).closest("tr").children().eq(5).text());
+	        	$('#idUpdateReserva').val($(this).closest("tr").children().eq(0).text());
+				$('#fechaUsoUpdateReserva').val($(this).closest("tr").children().eq(1).text());
+				$('#nombreUpdateReserva').val($(this).closest("tr").children().eq(2).text());
+				$('#apellidoUpdateReserva').val($(this).closest("tr").children().eq(3).text());
+				$('#numTelUpdateReserva').val($(this).closest("tr").children().eq(4).text());
+				$('#dniUpdateReserva').val($(this).closest("tr").children().eq(5).text());
+				$('#precioUpdateReserva').val($(this).closest("tr").children().eq(6).text());
 	        });
 			},
 			error : function(xhr) {
 				alert("An error occured: " + xhr.status + " " + xhr.statusText);
 			}
 	});
+//Fin de ajax reserva
+
+
 //Boton delete
 function deleteReserva(id) {
 	
@@ -188,9 +194,11 @@ function deleteReserva(id) {
   		
 }
 
+//Rellenar los datos para llamar al controlador y hacer el update
 $("#btnExecUpdateReservas").click(function(){
 
 	var idReserva=$('#idReserva').val();
+	var fechaUso=$('#fechaUsoUpdateReserva').val();
 	var nombreUsuarioReserva=$('#nombreUsuarioReserva').val();
 	var apellidoUsuarioReserva=$('#apellidoUsuarioReserva').val();
 	var numTelReserva=$('#numTelReserva').val();
@@ -199,7 +207,7 @@ $("#btnExecUpdateReservas").click(function(){
 
   	$.ajax({
        	type: "GET",
-       	data:{ 'id':id, 'nombre':nombre, 'contrasenia':contrasenia, 'nickName':nickName,'residencia':residencia,'email':email},
+       	data:{ 'idReserva':idReserva,'fechaUso':fechaUso, 'nombreUsuarioReserva':nombreUsuarioReserva, 'apellidoUsuarioReserva':apellidoUsuarioReserva, 'numTelReserva':numTelReserva,'dniReserva':dniReserva,'precioReserva':precioReserva},
        	url: "../Controller/cUpdateUser.php", 
        	datatype: "json",  //type of the result
        	success: function(result){  
