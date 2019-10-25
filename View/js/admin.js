@@ -43,7 +43,7 @@ $(document).ready(function(){
 	        	var id=$(this).val();
 	        	deleteFunction(id);
 	        });
-	        //Boton Update
+	        //Modal Update
 	        $(".btnUpdate").click(function(){
 
 	        	$('#idUpdate').val($(this).closest("tr").children().eq(0).text());
@@ -103,6 +103,8 @@ $(document).ready(function(){
 
 	       		location.reload(true);  //recarga la pagina
 	       		
+	       		//Boton delete
+		        
 	       	},
 	       	error : function(xhr) {
 	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
@@ -136,16 +138,83 @@ $.ajax({
 	    	newRow += '<td class="col">'+info.numTel+'</td>'
 	    	newRow += '<td class="col">'+info.dni+'</td>'
 	    	newRow += '<td class="col">'+info.precioTotal+'&#8364;</td>'
-	    	newRow += "<td class='col'><button class='btnDelete btn-danger' value='"+info.idUsuario+"'><i class='fas fa-trash-alt'></i></button></td>"
-            newRow += "<td class='col'><button class='btnUpdate btn-success' value='"+info.idUsuario+"' data-toggle='modal' data-target='#update'><i class='fas fa-edit'></i></button></td>"
+	    	newRow += "<td class='col'><button class='btnDeleteReserva btn-danger' value='"+info.idReserva+"'><i class='fas fa-trash-alt'></i></button></td>"
+            newRow += "<td class='col'><button class='btnUpdateReserva btn-success' value='"+info.idReserva+"' data-toggle='modal' data-target='#update'><i class='fas fa-edit'></i></button></td>"
 	    	});
 	    	newRow += '<tr>'
 	    		
 	    		$("#table_reserve").append(newRow);
-		
+	    	
+	    	//Delete Reserva
+	    	$(".btnDeleteReserva").click(function(){
+	        	var id=$(this).val();
+	        	deleteReserva(id);
+	        });
+	    	//Modal reserva
+	        $(".btnUpdateReserva").click(function(){
+
+	        	$('#idReserva').val($(this).closest("tr").children().eq(0).text());
+				$('#nombreUsuarioReserva').val($(this).closest("tr").children().eq(1).text());
+				$('#apellidoUsuarioReserva').val($(this).closest("tr").children().eq(2).text());
+				$('#numTelReserva').val($(this).closest("tr").children().eq(3).text());
+				$('#dniReserva').val($(this).closest("tr").children().eq(4).text());
+				$('#precioReserva').val($(this).closest("tr").children().eq(5).text());
+	        });
 			},
 			error : function(xhr) {
 				alert("An error occured: " + xhr.status + " " + xhr.statusText);
 			}
 	});
+//Boton delete
+function deleteReserva(id) {
+	
+	console.log(id);
+	alert(id);
+	$.ajax({
+       	type: "GET",
+       	data:{ 'id':id},
+       	url: "../Controller/cDeleteReserva.php", 
+
+       	success: function(result){  
+       		
+       		console.log(result);
+       		
+       		location.reload(true);  // recarga la pagina
+       	},
+       	error : function(xhr) {
+   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   		}
+   });
+  		
+}
+
+$("#btnExecUpdateReservas").click(function(){
+
+	var idReserva=$('#idReserva').val();
+	var nombreUsuarioReserva=$('#nombreUsuarioReserva').val();
+	var apellidoUsuarioReserva=$('#apellidoUsuarioReserva').val();
+	var numTelReserva=$('#numTelReserva').val();
+	var dniReserva=$('#dniReserva').val();
+	var precioReserva=$('#precioReserva').val();
+
+  	$.ajax({
+       	type: "GET",
+       	data:{ 'id':id, 'nombre':nombre, 'contrasenia':contrasenia, 'nickName':nickName,'residencia':residencia,'email':email},
+       	url: "../Controller/cUpdateUser.php", 
+       	datatype: "json",  //type of the result
+       	success: function(result){  
+       		
+       		console.log(result);
+
+       		location.reload(true);  //recarga la pagina
+       		
+       		//Boton delete
+	        
+       	},
+       	error : function(xhr) {
+   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   		}
+    });
+  		
+ });
 });

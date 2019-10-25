@@ -92,15 +92,15 @@ class reservaModel extends reservaClass{
         
         $this->CloseConnect();
     }
-	/*
+	
 	//Delete Usuarios
    	public function delete(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
 
-        $id=$this->getIdUsuario();
+        $id=$this->getIdReserva();
         
-        $sql="CALL spDeleteUser($id)";
+        $sql="CALL spDeleteReserva($id)";
         
         $numFilas=$this->link->query($sql); 
         
@@ -113,7 +113,7 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
         
     }
-    
+    /*
 	//Update Usuarios
 	public function Update(){
         
