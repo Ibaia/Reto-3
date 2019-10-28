@@ -10,21 +10,22 @@ $(document).ready(function(){
 	    	$.ajax({
 			    type:"POST", 
 			    url: "../controller/cLogin.php", 
-			    datatype: "text",  //type of the result
+			    dataType: "text",  //type of the result
 			    data:{'login':1,'emailPHP':email,'contraseniaPHP':contrasenia},
 			    success: function(result){
 			    	
 			    	
 			        console.log(result);
+			        alert(result);
 			        
-			        if (result=="correct"){
+			        if (result!="failed"){
 			        	alert("Correcto");
 			        	if(email=="admin@gmail.com" || contrasenia=="admin"){
 			        		alert("admin");
 			        		window.location.href="adim.html";
 			        	}else{
 			        		alert("user");
-			        		window.location.href="pago.html";
+			        		window.location.href="../index.php";
 			        		
 			        	}
 			        	
