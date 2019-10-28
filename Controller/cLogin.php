@@ -13,7 +13,10 @@ if(isset($_POST['login'])){
 
     if($data->num_rows>0){
         session_start();
+        $_SESSION["email"]= $email;;
         echo $_SESSION["email"]= $email; 
+        
+        
         //echo $_SESSION[$contrasenia]; 
         //echo ("correct");
         /*$row = mysqli_fetch_array($data, MYSQLI_ASSOC);
