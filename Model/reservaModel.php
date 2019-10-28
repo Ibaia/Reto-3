@@ -132,11 +132,11 @@ class reservaModel extends reservaClass{
         $numFilas=$this->link->query($sql);
         
         if ($numFilas>=1){
-            return "insertado";
+            return "Modificado";
         } else {
             return "Error al insertar";
         }
-        
+
         $this->CloseConnect();
     }
 	

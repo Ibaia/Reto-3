@@ -1,26 +1,48 @@
 <!DOCTYPE html>
+
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="jquery-3..1.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="view/css/index.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="img/dino.png" />
+    <title>Home</title>
+
+   
+
+
+    <!-- <script src="View/js/js_bootstrap"></script> -->
     <link href="View/css/index.css" rel="stylesheet" type="text/css" />
     <script src="View/js/index.js"></script>
-    <link rel="shortcut icon" href="view/img/dino.png" />
+    <link rel="shortcut icon" href="View/img/dino.png" />
     <title>Home</title>
+
 </head>
 <body>
-        <div id="myModal" class="modal fade">
+         <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-login">
                     <div class="modal-content">
                        
                       <div class="modal-header">
-                        <h4 class="modal-title">Â¡Bienvenidos a EMPRESAURIOS GAMING!</h4>
+
+                        <h4 class="modal-title"> <?php 
+                            session_start();
+                            if(isset($_SESSION['email'])){
+                                echo  "¡Bienvenido ".$_SESSION["email"];
+                            }else{
+                                echo "¡Bienvenidos a EMPRESAURIOS GAMING!";
+                            }
+                            
+                            ?>
+						</h4>
+
+                        
+
                       </div>
                       <div class="modal-body">
                         <a href="View/login.html" ><img id="modal-img" src="View/img/empresauiros_logo.png" /></a><br><br>
@@ -48,17 +70,27 @@
               <a class="nav-link" href="#">Noticias <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Centro</a>
+              <a class="nav-link" href="View/pago.html">Centro</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Usuario
+                <?php 
+                
+                
+                if(isset($_SESSION['email'])){
+                    echo $_SESSION["email"];
+                }else{
+                    
+                    echo "Usuario";
+                }
+                    
+                ?>
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Cerrar SesiÃ³n</a>
+                <a id="logout" class="dropdown-item">Cerrar Sesión </a>
               </div>
             </li>
             <li class="redes nav-item">
@@ -94,11 +126,11 @@
           </div>
         
         <div class="midel-text">
-        <b>Â¿QUÃ‰ ES EMPRESAURIOS GAMING CENTER?</b><br>
-        Empresaurios Gaming Center es la primera franquicia de centros de alto rendimiento en EspaÃ±a,<br>
-        un lugar Ãºnico dedicado a los videojuegos competitivos donde los jugadores encontrarÃ¡n <br>
-        ordenadores de Ãºltima generaciÃ³n y las mejores instalaciones para disfrutar de los deportes <br>
-        electrÃ³nicos de manera profesional.
+        <b>¿QUÉ ES EMPRESAURIOS GAMING CENTER?</b><br>
+        Empresaurios Gaming Center es la primera franquicia de centros de alto rendimiento en España,<br>
+        un lugar único dedicado a los videojuegos competitivos donde los jugadores encontrarán <br>
+        ordenadores de última generación y las mejores instalaciones para disfrutar de los deportes <br>
+        electrónicos de manera profesional.
         </div>
 
             <!-- <div class="triple-text row justify-content-center">
@@ -107,15 +139,15 @@
                 </div>
                 <div class="col col-3">
                     <b>GAMING</b><br>
-                    Nuestro centro aÃºna todo lo que un gamer busca para su diversiÃ³n y desarrollo; comunidad, ordenadores gaming de Ãºltima generaciÃ³n, la mejor conexiÃ³n a internet o los mismos perifÃ©ricos que usan los profesionales.
+                    Nuestro centro aúna todo lo que un gamer busca para su diversión y desarrollo; comunidad, ordenadores gaming de última generación, la mejor conexión a internet o los mismos periféricos que usan los profesionales.
                 </div>
                 <div class="col col-3">
-                    <b>COMPETICIÃ“N</b><br>
-                    En Elite encontrarÃ¡s un lugar Ãºnico donde desarrollar tus habilidades como jugador asÃ­ como un rincÃ³n donde poder disputar y vivir la competiciÃ³n como nunca antes la habÃ­as experimentado.
+                    <b>COMPETICIÓN</b><br>
+                    En Elite encontrarás un lugar único donde desarrollar tus habilidades como jugador así como un rincón donde poder disputar y vivir la competición como nunca antes la habías experimentado.
                 </div>
                 <div class="col col-3 ">
                     <b>E-SPORTS</b><br>
-                    Los deportes electrÃ³nicos son el centro de nuestro modelo de negocio, si buscas vivir experiencias Ãºnicas, sensaciones nunca antes vividas, sentimientos que no sabÃ­as que existÃ­an, Elite Gaming Center es tu centro de eSports.
+                    Los deportes electrónicos son el centro de nuestro modelo de negocio, si buscas vivir experiencias únicas, sensaciones nunca antes vividas, sentimientos que no sabías que existían, Elite Gaming Center es tu centro de eSports.
                 </div>
                 <div class="col col-1 ">
                 <img src="img/empresauiros_logo.png" />
@@ -128,21 +160,21 @@
                     
                 <div class="text">
                     <b>GAMING</b><br>
-                    Nuestro centro aÃºna todo lo que un gamer busca para su diversiÃ³n y 
-                    desarrollo; comunidad, ordenadores gaming de Ãºltima generaciÃ³n, la 
-                    mejor conexiÃ³n a internet o los mismos perifÃ©ricos que usan los profesionales.
+                    Nuestro centro aúna todo lo que un gamer busca para su diversión y 
+                    desarrollo; comunidad, ordenadores gaming de última generación, la 
+                    mejor conexión a internet o los mismos periféricos que usan los profesionales.
                 </div>
                 <div class="text">
-                    <b>COMPETICIÃ“N</b><br>
-                    En Empresaurios encontrarÃ¡s un lugar Ãºnico donde desarrollar tus habilidades 
-                    como jugador asÃ­ como un rincÃ³n donde poder disputar y vivir la 
-                    competiciÃ³n como nunca antes la habÃ­as experimentado.
+                    <b>COMPETICIÓN</b><br>
+                    En Empresaurios encontrarás un lugar único donde desarrollar tus habilidades 
+                    como jugador así como un rincón donde poder disputar y vivir la 
+                    competición como nunca antes la habías experimentado.
                 </div>
                 <div class="text">
                     <b>E-SPORTS</b><br>
-                    Los deportes electrÃ³nicos son el centro de nuestro modelo de negocio, 
-                    si buscas vivir experiencias Ãºnicas, sensaciones nunca antes vividas, 
-                    sentimientos que no sabÃ­as que existÃ­an.
+                    Los deportes electrónicos son el centro de nuestro modelo de negocio, 
+                    si buscas vivir experiencias únicas, sensaciones nunca antes vividas, 
+                    sentimientos que no sabías que existían.
                 </div>
                     
                     <img src="View/img/empresauiros_logo.png" />
@@ -152,14 +184,14 @@
             <iframe src="https://www.youtube.com/embed/bwFRGcq2TJc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         
         
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+        <script src="View/js/index.js"></script>
+    
 </body>
 </html>

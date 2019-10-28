@@ -4,7 +4,6 @@ include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/reservaModel.php");
 
 $reserva=new reservaModel();
 
-
 $idReserva=filter_input(INPUT_GET,"idReserva");
 if (isset($idReserva)){
     $reserva->setIdReserva($idReserva);
@@ -27,7 +26,7 @@ if (isset($apellidoUsuarioReserva)){
 
 $numTelReserva=filter_input(INPUT_GET,"numTelReserva");
 if (isset($numTelReserva)){
-    $reserva->setNumTel($numTel);
+    $reserva->setNumTel($numTelReserva);
 }
 
 $dniReserva=filter_input(INPUT_GET,"dniReserva");
@@ -40,7 +39,7 @@ if (isset($precioReserva)){
 	$reserva->setPrecioTotal($precioReserva);
 }
 
-
+//LLama al modelo para ejecutar el update
 $resultado=$reserva->update();
 
 echo $resultado;
