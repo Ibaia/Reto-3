@@ -30,7 +30,7 @@
 <body>
 
 	<div class="card bg-light">
-		<form action="login.html" class="card-body mx-auto" style="max-width: 400px;" onsubmit="validatePassword()">
+		<form action="login.html" class="card-body mx-auto" style="max-width: 400px;" onsubmit="return validatePassword()">
 			<h4 class="card-title mt-3 text-center">Create Account</h4>
 			<p class="text-center">Get started with your free account</p>
 				<div class="form-group input-group">
@@ -93,7 +93,7 @@
 				</div>
 				<!-- form-group// -->
 
-				<button id="btnInsert" type="button" class="btn btn-primary btn-block">Create Account</button>
+				<button id="btnInsert" type="submit" class="btn btn-primary btn-block">Create Account</button>
 				<p class="text-center">
 					Have an account? <a href="login.html">Log In</a>
 				</p>
