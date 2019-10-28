@@ -14,17 +14,11 @@
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="view/css/index.css" rel="stylesheet" type="text/css" />
-    <script src="view/js/index.js"></script>
-    <link rel="shortcut icon" href="img/dino.png" />
+    <!-- <script src="View/js/js_bootstrap"></script> -->
+    <link href="View/css/index.css" rel="stylesheet" type="text/css" />
+    <script src="View/js/index.js"></script>
+    <link rel="shortcut icon" href="View/img/dino.png" />
     <title>Home</title>
-
-    <script>
-    $( document ).ready(function() {
-        $('#myModal').modal('toggle')
-    });
-    </script>
-
 </head>
 <body>
          <div id="myModal" class="modal fade">
@@ -32,6 +26,7 @@
                     <div class="modal-content">
                        
                       <div class="modal-header">
+
                         <h4 class="modal-title"> <?php 
                             session_start();
                             if(isset($_SESSION['email'])){
@@ -42,6 +37,9 @@
                             
                             ?>
 						</h4>
+
+                        <h4 class="modal-title">¡Bienvenidos a EMPRESAURIOS GAMING!</h4>
+
                       </div>
                       <div class="modal-body">
                         <a href="View/login.html" ><img id="modal-img" src="View/img/empresauiros_logo.png" /></a><br><br>
@@ -54,8 +52,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
        
         <div class="logo_titulo">
-            <img id="logo" src="view/img/empresauiros_logo.png" />
-            <img id="titulo" src="view/img/title.png" />
+            <img id="logo" src="View/img/empresauiros_logo.png" />
+            <img id="titulo" src="View/img/title.png" />
         </div>
             
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,9 +89,9 @@
               </div>
             </li>
             <li class="redes nav-item">
-              <img src="view/img/insta_icon.png" />
-              <img src="view/img/twit_icon.png" />
-              <img src="view/img/face_icon.png" />
+              <img src="View/img/insta_icon.png" />
+              <img src="View/img/twit_icon.png" />
+              <img src="View/img/face_icon.png" />
             </li>
           </ul>         
         </div>
@@ -103,13 +101,13 @@
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="view/img/1.jpg" class="d-block w-100" alt="...">
+                <img src="View/img/1.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="view/img/2.jpg" class="d-block w-100" alt="...">
+                <img src="View/img/2.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item">
-                <img src="view/img/3.jpg" class="d-block w-100" alt="...">
+                <img src="View/img/3.jpg" class="d-block w-100" alt="...">
               </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -153,7 +151,7 @@
 
         <div class="triple-text">
                     
-            <img src="view/img/empresauiros_logo.png" />
+            <img src="View/img/empresauiros_logo.png" />
                     
                 <div class="text">
                     <b>GAMING</b><br>
@@ -174,7 +172,7 @@
                     sentimientos que no sabías que existían.
                 </div>
                     
-                    <img src="view/img/empresauiros_logo.png" />
+                    <img src="View/img/empresauiros_logo.png" />
                     
             </div>
 
