@@ -66,6 +66,7 @@ $(document).ready(function(){
 		
 		console.log(id);
 		alert(id);
+		
 		$.ajax({
 	       	type: "GET",
 	       	data:{ 'id':id},
@@ -208,7 +209,7 @@ $("#btnExecUpdateReservas").click(function(){
   	$.ajax({
        	type: "GET",
        	data:{ 'idReserva':idReserva,'fechaUso':fechaUso, 'nombreUsuarioReserva':nombreUsuarioReserva, 'apellidoUsuarioReserva':apellidoUsuarioReserva, 'numTelReserva':numTelReserva,'dniReserva':dniReserva,'precioReserva':precioReserva},
-       	url: "../Controller/cUpdateUser.php", 
+       	url: "../Controller/cUpdateReserva.php", 
        	datatype: "json",  //type of the result
        	success: function(result){  
        		

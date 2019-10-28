@@ -113,21 +113,21 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
         
     }
-    /*
 	//Update Usuarios
-	public function Update(){
+	public function update(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
         
-        $nombreUpdate=$this->getNombre();
-		$contraseniaUpdate=$this->getContrasenia();
-		$nickNameUpdate=$this->getNickName();
-		$residenciaUpdate=$this->getResidencia();
-		$emailUpdate=$this->getEmail();
-		$numTelUpdate=$this->getNumTel();
+        $idReserva=$this->getIdReserva();
+		$fechaUso=$this->getFechaUso();
+		$nombreUser=$this->getNombreUsuario();
+		$apellidoUser=$this->getApellidoUsuario();
+		$numTelReserva=$this->getNumTel();
+		$dniReserva=$this->getDni();
+		$precioTotalReserva=$this->getPrecioTotal();
 
-        $sql="CALL spUpdateUser('$nombreUpdate','$contraseniaUpdate','$nickNameUpdate','$residenciaUpdate','$emailUpdate',$numTelUpdate)";
+        $sql="CALL spUpdateReserva('$idReserva','$fechaUso','$nombreUser','$apellidoUser','$numTelReserva','$dniReserva','$precioTotalReserva')";
         
         $numFilas=$this->link->query($sql);
         
@@ -138,7 +138,7 @@ class reservaModel extends reservaClass{
         }
         
         $this->CloseConnect();
-    }*/
+    }
 	
     function getListJsonString() {//if Class attributes PROTECTED
         

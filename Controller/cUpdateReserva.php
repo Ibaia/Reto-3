@@ -2,43 +2,46 @@
 
 include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/reservaModel.php");
 
-$usuario=new reservaModel();
+$reserva=new reservaModel();
 
-$id=filter_input(INPUT_GET,"id");
 
-if (isset($id))
-{
-    $usuario->setIdUsuario($id);
-}
-
-$nombre=filter_input(INPUT_GET,"nombre");
-if (isset($nombre))
-{
-    $usuario->setNombre($nombre);
-}
-$contrasenia= filter_input(INPUT_GET,"contrasenia");
-if (isset($contrasenia))
-{
-    $usuario->setContrasenia($contrasenia);
-}
-$nickName=filter_input(INPUT_GET,"nickName");
-if (isset($nickName))
-{
-    $usuario->setNickName($nickName);
-}
-$residencia=filter_input(INPUT_GET,"residencia");
-if (isset($residencia))
-{
-    $usuario->setResidencia($residencia);
+$idReserva=filter_input(INPUT_GET,"idReserva");
+if (isset($idReserva)){
+    $reserva->setIdReserva($idReserva);
 }
 
-$email=filter_input(INPUT_GET,"email");
-if (isset($email))
-{
-    $usuario->setEmail($email);
+$fechaUso=filter_input(INPUT_GET,"fechaUso");
+if (isset($fechaUso)){
+    $reserva->setFechaUso($fechaUso);
 }
 
-$resultado=$usuario->Update();
+$nombreUsuarioReserva= filter_input(INPUT_GET,"nombreUsuarioReserva");
+if (isset($nombreUsuarioReserva)){
+    $reserva->setNombreUsuario($nombreUsuarioReserva);
+}
+
+$apellidoUsuarioReserva=filter_input(INPUT_GET,"apellidoUsuarioReserva");
+if (isset($apellidoUsuarioReserva)){
+    $reserva->setApellidoUsuario($apellidoUsuarioReserva);
+}
+
+$numTelReserva=filter_input(INPUT_GET,"numTelReserva");
+if (isset($numTelReserva)){
+    $reserva->setNumTel($numTel);
+}
+
+$dniReserva=filter_input(INPUT_GET,"dniReserva");
+if (isset($dniReserva)){
+    $reserva->setDni($dniReserva);
+}
+
+$precioReserva=filter_input(INPUT_GET, "precioReserva");
+if (isset($precioReserva)){
+	$reserva->setPrecioTotal($precioReserva);
+}
+
+
+$resultado=$reserva->update();
 
 echo $resultado;
 
