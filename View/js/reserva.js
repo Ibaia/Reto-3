@@ -30,15 +30,15 @@ $(document).ready(function() {
             dataType: "json",  //type of the result
             
             success: function(result){
-                var ordenadores = JSON.parse(result);
-                console.log(ordenadores);
+
+                console.log(result);
             
                 $("#nav-info").empty();
                 var newRow="";
                 
-                $.each(ordenadores,function(i,ordenador) {
+                $.each(result,function(i,ordenador) {
     
-                newRow += '<div data-id="'+ordenador.id+'" class="text"><br><b> Nº'+(ordenador.id)+'</b><br><a href="#"> <img src="img/gaming-pc.jpg" class="pcGaming" id="' +(ordenador.id)+ '"/><a/><div/>'
+                newRow += '<div data-id="'+ordenador.idOrdenador+'" class="text"><br><b> Nº'+ordenador.idOrdenador+'</b><br><a href="#"><img src="img/gaming-pc.jpg" class="pcGaming" id="'+ordenador.idOrdenador+'"/></a></div>'
                 
                 });
                     

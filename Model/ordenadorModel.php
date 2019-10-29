@@ -1,24 +1,16 @@
 <?php
 include_once ("connect_data.php");  // klase honetan gordetzen dira datu basearen datuak. erabiltzailea...
-
+include_once ("ordenadorClass.php");
 
 class ordenadorModel extends ordenadorClass {
 	
     private $link;  // datu basera lotura - enlace a la bbdd
-    private $list;  // datu basetik ekarritako datuak gordeko diren array-a 
+    private $list=array();  // datu basetik ekarritako datuak gordeko diren array-a 
     // protected $ordenadorFecha=array();
-      
-    //ordenagailuFecha ko datuak gordeko dira hemen objetu bezala
-    protected $objectOrdenadorFecha;
          
  public function getList() {
         return $this->list;
     }
-    
- public function getObjectOrdenadorFecha() 
- {
-        return $this->objectOrdenadorFecha;
- }
 
  public function OpenConnect()
     {
@@ -45,31 +37,37 @@ class ordenadorModel extends ordenadorClass {
  
  public function setList()
  {
-   /*
-  * gets from the ddbb all the books in the table
-  */
-        $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-        $sql = "CALL spAllPcs()"; // SQL sententzia - sentencia SQL
-        $this->list = array(); // objetuaren list atributua array bezala deklaratzen da - 
-                    //se declara como array el atributo list del objeto
-        
-        $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
-                    // se guarda en result toda la información solicitada a la bbdd
-        
-        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        	
-            $new=new self();
-            $new->setId($row['id']);
-            
-            require_once ("ordenadorFechaModel.php");
-            $datosOrdenadorFecha=new ordenadorFechaModel(); 
-            $new->objectOrdenadorFecha=$datosOrdenadorFecha->findIdFechaOrdenador($row['fechaUso']);
-                                        // honek itzultzen digu editorialaren datua objetu baten.
-            array_push($this->list, $new);  
-        }
-       mysqli_free_result($result); 
-       unset($datoEditorial);
-       $this->CloseConnect();
+     $this->OpenConnect();
+     
+     $sql = "CALL spAllPcs()"; // SQL sententzia - sentencia SQL
+     
+     $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+     // se guarda en result toda la informacion solicitada a la bbdd
+     
+     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+         
+         $nuevo=new ordenadorClass();
+         $nuevo->setIdOrdenador($row['id']);
+         
+         array_push($this->list, $nuevo);
+     }
+     mysqli_free_result($result);
+     $this->CloseConnect();
+ }
+ 
+ function getListJsonString() {//if Class attributes PROTECTED
+     
+     // returns the list of objects in a srting with JSON format
+     // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
+     $arr=array();
+     
+     foreach ($this->list as $object)
+     {
+         $vars = get_object_vars($object);
+         
+         array_push($arr, $vars);
+     }
+     return json_encode($arr);
  }
  
  /*
