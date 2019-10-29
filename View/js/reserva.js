@@ -20,20 +20,46 @@ var cadena = localStorage['cafe'];
     }
     localsala = JSON.parse(cadena);
 
+   
 
-$(document).ready(function () {
+$(document).ready(function() {
 
+        $.ajax({
+            type:"GET",
+            url: "../Controller/cOrdenador.php", 
+            dataType: "json",  //type of the result
+            
+            success: function(result){
+                console.log(result);
+            
+                $("#nav-info").empty();
+                var newRow="";
+                
+                $.each(result,function(i,ordenador) {
+    
+                newRow += '<div data-id="'+ordenador.idOrdenador+'" class="text"><br><b> Nº'+ordenador.idOrdenador+'</b><br><a href="#"><img src="img/gaming-pc.jpg" class="pcGaming" id="'+ordenador.idOrdenador+'"/></a></div>'
+                
+                });
+                    
+                    $("#nav-info").append(newRow);
+            
+                },
+                error : function(xhr) {
+                    alert("An error occured: " + xhr.status + " " + xhr.statusText);
+                }
+        });
+ 
 
     /* carga las imagenes en el container */
-    $('#nav-info').append(function () {
+    // $('#nav-info').append(function () {
 
-        for (i = 0; i < localsala.length; i++) {
+    //     for (i = 0; i < localsala.length; i++) {
 
-            $(this).append('<div data-id="'+localsala[i].ordenadores+'" class="text"><br><b> Nº'+(localsala[i].ordenadores)+'</b><br><a href="#"> <img class="pcGaming" id="' +(localsala[i].ordenadores)+ '"/><a/><div/>'); 
-            $('.text img').attr('src', 'img/gaming-pc.jpg');
-        }
+    //         $(this).append('<div data-id="'+localsala[i].id+'" class="text"><br><b> Nº'+(localsala[i].id)+'</b><br><a href="#"> <img class="pcGaming" id="' +(localsala[i].id)+ '"/><a/><div/>'); 
+    //         $('.text img').attr('src', 'img/gaming-pc.jpg');
+    //     }
         
-    });
+    // })
 
     /* estado de los ordenadores según su fecha de reserva */
     $('#dateButton').click(function () {
@@ -58,7 +84,7 @@ $(document).ready(function () {
         }else{
         /* si el ordenador está disponible mostrará el color verde, si no, rojo */
             $('.pcGaming').each(function (i) {
-                if ($(this).attr('id')==localsala[i].ordenadores) {
+                if ($(this).attr('id')==localsala[i].id) {
                     if (localsala[i].fecha.match($('#date').val())) {
                         $('.text:eq('+i+')').css('background-color', 'red');
                     } else {
