@@ -1,14 +1,22 @@
 <?php
-include_once ("../model/connect_data.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
 include_once("reservaClass.php");
 
 class reservaModel extends reservaClass{
 	
 	private $link;
-	private $list= array();
+	private $list = array();
+	protected $objectOrdenador;
 	
-	public function OpenConnect()
-{
+	//Getters
+	private function getList(){
+		return $this->list;
+	}
+ 	public function getObjectOrdenador(){
+        return $this->objectOrdenador;
+ 	}
+ 
+	public function OpenConnect(){
     $konDat=new connect_data();
     try
     {
@@ -22,18 +30,13 @@ class reservaModel extends reservaClass{
     }
         $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta 
         //                  //databasearen artean UTF -8 erabiltzera datuak trukatzeko
-}                   
+	}                   
  
  public function CloseConnect()
  {
      mysqli_close ($this->link);
  }
  
- 
-	private function getList(){
-		return $this->list;
-	}
-	
 	//Cargar los datos
 	public function setList(){
 		
@@ -47,33 +50,37 @@ class reservaModel extends reservaClass{
 			
 			$reserva= new reservaClass();
 			
-			$reserva->setIdReserva($row{'id'});
-			$reserva->setIdOrdenador($row['idOrdenador']);
-			$reserva->setIdUsuario($row['idUsuario']);
+			$reserva->setIdReserva($row['id']);
 			$reserva->setFechaReserva($row['fechaReserva']);
 			$reserva->setFechaUso($row['fechaUso']);
-
-			
-			 array_push($this->list, $reserva);
+			$reserva->setNombreUsuario($row['nombreUsuario']);
+			$reserva->setApellidoUsuario($row['apellidoUsuario']);
+			$reserva->setNumTel($row['numTel']);
+			$reserva->setDni($row['DNI']);
+			$reserva->setPrecioTotal($row['precioTotal']);
+					
+			array_push($this->list, $reserva);
 		}
-		        mysqli_free_result($result);
+		
+		    mysqli_free_result($result);
+		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	
-	/*
-	//Insert Usuarios
+	
+	//Insert Reserva
 	public function insert(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        $nombreInsert=$this->getTituloPelicula();
-		$contraseniaInsert=$this->getContrasenia();
-		$nickNameInsert=$this->getNickName();
-		$residenciaInsert=$this->getResidencia();
-		$emailInsert=$this->getEmail();
-		$numTelInsert=$this->getNumTel();
+			$reservaFecha->setFechaUso($row['fechaUso']);
+			$reservaNombre->setNombreUsuario($row['nombreUsuario']);
+			$reservaApellido->setApellidoUsuario($row['apellidoUsuario']);
+			$reservaNumTel->setNumTel($row['numTel']);
+			$reservaDni->setDni($row['DNI']);
+			$reservaPrecio->setPrecioTotal($row['precioTotal']);
 
-        $sql="CALL spInsertUser('$nombreInsert','$contraseniaInsert','$nickNameInsert','$residenciaInsert','$emailInsert',$numTelInsert)";
+        $sql="CALL spInsertUser('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
         
         $numFilas=$this->link->query($sql);
         
@@ -91,9 +98,9 @@ class reservaModel extends reservaClass{
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
 
-        $id=$this->getIdUsuario();
+        $id=$this->getIdReserva();
         
-        $sql="CALL spDeleteUser($id)";
+        $sql="CALL spDeleteReserva($id)";
         
         $numFilas=$this->link->query($sql); 
         
@@ -106,7 +113,7 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
         
     }
-    
+    /*
 	//Update Usuarios
 	public function Update(){
         
@@ -132,15 +139,16 @@ class reservaModel extends reservaClass{
         
         $this->CloseConnect();
     }*/
+	
     function getListJsonString() {//if Class attributes PROTECTED
         
         // returns the list of objects in a srting with JSON format
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $object)
+        foreach ($this->list as $objectReserva)
         {
-            $vars = get_object_vars($object);
+            $vars = get_object_vars($objectReserva);
             
             array_push($arr, $vars);
         }

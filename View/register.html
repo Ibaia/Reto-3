@@ -29,10 +29,12 @@
 
 <body>
 
+	<!-- Register Form -->
 	<div class="card bg-light">
-		<form action="login.html" class="card-body mx-auto" style="max-width: 400px;" onsubmit="validatePassword()">
+		<form action="login.html" class="card-body mx-auto" style="max-width: 400px;" onsubmit="return validatePassword()">
 			<h4 class="card-title mt-3 text-center">Create Account</h4>
 			<p class="text-center">Get started with your free account</p>
+				<!-- Nombre -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-user"></i>
@@ -41,7 +43,7 @@
 					<input id="nombre" class="form-control" placeholder="Nombre"
 						type="text" required>
 				</div>
-				<!-- form-group// -->
+				<!-- Contraseña -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-lock"></i>
@@ -50,7 +52,7 @@
 					<input id="contrasenia" class="form-control" placeholder="Contraseña"
 						type="password" required>
 				</div>
-				<!-- form-group// -->
+				<!-- Repetir contraseña -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-lock"></i>
@@ -59,20 +61,19 @@
 					<input id="confirm_password" class="form-control"
 						placeholder="Repite contraseña" type="password" required>
 				</div>
-				<!-- form-group// -->
-				<div class="form-group"></div>
-				<!-- form-group// -->
+			
+				<!-- Apodo -->
 
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
-						<span class="input-group-text"> <i class="fa fa-phone"></i>
+						<span class="input-group-text"> <i class="fas fa-tag"></i>
 						</span>
 					</div>
 
 					<input id="apodo" class="form-control" placeholder="Apodo" type="text"
 						required>
 				</div>
-				<!-- form-group// -->
+				<!-- Residencia -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="far fa-building"></i>
@@ -82,7 +83,7 @@
 					<input id="residencia" class="form-control" placeholder="Residencia"
 						type="text" required>
 				</div>
-				<!-- form-group// -->
+				<!-- Email -->
 				<div class="form-group input-group">
 					<div class="input-group-prepend">
 						<span class="input-group-text"> <i class="fa fa-envelope"></i>
@@ -91,9 +92,9 @@
 					<input id="email" class="form-control" placeholder="Email"
 						type="email" required>
 				</div>
-				<!-- form-group// -->
+				<!-- Boton -->
 
-				<button id="btnInsert" type="button" class="btn btn-primary btn-block">Create Account</button>
+				<button id="btnInsert" type="submit" class="btn btn-primary btn-block">Create Account</button>
 				<p class="text-center">
 					Have an account? <a href="login.html">Log In</a>
 				</p>

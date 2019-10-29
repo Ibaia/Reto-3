@@ -34,6 +34,7 @@
     <header>
         <h1>Ajustes de Administrador </h1>
     </header>
+<<<<<<< HEAD
 
     <div class="buttons">
 
@@ -81,6 +82,146 @@
                         <table id="table_reserve" class="table table-striped">
                        
                         </table>
+=======
+    
+	<!-- Botones para mostrar modales -->
+    <div class="buttons">
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#usuarios">Usuarios</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reservas">Reservas</button>
+
+    </div>
+
+
+
+
+	<!-- Modal de usuarios -->
+    <div class="modal fade" id="usuarios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                	<!-- Todos los usuaris en tabla -->
+                    <table id="table_user" class="table table-striped">
+                       
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+	<!-- Modal de reservas -->
+    <div class="modal fade" id="reservas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                		<!-- Todas las reservas en tabla -->
+                        <table id="table_reserve" class="table table-striped">
+                       
+                        </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de update de usuarios -->
+
+    <!-- Modal update usuarios -->
+
+    <div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <h4>Modificar Usuario:</h4>
+        	
+			         	
+			          <input type="hidden"  id="idUpdate" >
+			         
+			          Nombre:<br>
+			          <input type="text" id="nombreUpdate" >
+			          <br>
+			          Contraseña:<br>
+			          <input type="text" id="contraseniaUpdate">
+			          <br>
+			          Nick Name:<br>
+			          <input type="text" id="nickNameUpdate">
+			          <br>
+			          Residencia:<br>
+			          <input type="text" id="residenciaUpdate">
+			          <br>
+			          Email:<br>
+			          <input type="text" id="emailUpdate">
+			          <br>
+			          
+			          <br>
+			          <button id="btnExecUpdate" >Execute Update</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal update reservas -->
+        <div class="modal fade" id="updateReserva" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                        <h4>Modificar Reserva:</h4>
+        	
+			         	
+			          <input type="hidden" id="idUpdateReserva" >
+			         
+			          Fecha para reserva:<br>
+			          <input type="text" id="fechaUsoUpdateReserva" >
+			          <br>
+			          Nombre:<br>
+			          <input type="text" id="nombreUpdateReserva">
+			          <br>
+			          Apellido:<br>
+			          <input type="text" id="apellidoUpdateReserva">
+			          <br>
+			          Numero de telefono:<br>
+			          <input type="text" id="numTelUpdateReserva">
+			          <br>
+			          DNI:<br>
+			          <input type="text" id="dniUpdateReserva">
+			          <br>
+			          Precio:<br>
+			          <input type="text" id="precioUpdateReserva">
+			          <br>
+			          
+			          <br>
+			          <button id="btnExecUpdateReserva" >Execute Update</button>
+>>>>>>> branch 'Master_branch' of https://github.com/Ibaia/Reto-3.git
                 </div>
 
             </div>

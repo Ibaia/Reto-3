@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 
 <html>
@@ -32,17 +29,19 @@
 
       <!-- Icon -->
       <div class="fadeIn first">
-        <img src="img/cibercafe.jpg" id="icon" alt="User Icon" />
+        <img src="img/empresauiros_logo.png" id="icon" alt="User Icon" />
       </div>
 
       <!-- Login Form -->
-      <form action="adim.html" onsubmit="return validar()">
+      <form method="post" >
         <input type="email" id="email" class="fadeIn second" name="login" placeholder="Email" required>
-        <input type="password" id="contraseña" class="fadeIn third" name="login" placeholder="Contraseña" required>
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input type="password" id="contrasenia" class="fadeIn third" name="login" placeholder="Contraseña" required>
+        <input type="submit" class="fadeIn fourth" value="Log In" id="login">
       </form>
+      
+      
 
-      <!-- Remind Passowrd -->
+      <!-- Link a la pagina register.html -->
       <div id="formFooter">
         <a class="underlineHover" href="register.html">Registrarse</a>
       </div>
