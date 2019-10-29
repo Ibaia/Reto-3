@@ -1,13 +1,11 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/usuarioModel.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/ordenadorModel.php");
 
-$usuario= new usuarioModel();
-$usuario->setList(); 
+$ordenador= new ordenadorModel();
+$ordenador->setList(); 
 
-$listaUsuariosJson=$usuario->getListJsonString();
+$listaOrdenadoresJson=$ordenador->getListJsonString();
 
-echo $listaUsuariosJson;
+echo $listaOrdenadoresJson;
 
-unset ($usuario);
-
-?>
+unset ($ordenador);
