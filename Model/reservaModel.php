@@ -93,7 +93,7 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
     }
 	
-	//Delete Usuarios
+	//Delete Reserva
    	public function delete(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión

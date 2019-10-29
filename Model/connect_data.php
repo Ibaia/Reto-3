@@ -1,5 +1,7 @@
 <?php
 
+// Conecsion a la BBDD
+
 class connect_data
 {
     public $host='localhost';

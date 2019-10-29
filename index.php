@@ -27,20 +27,27 @@
 
 </head>
 <body>
+
+         <!-- Modal de inicio de sesion -->
+         
          <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-login">
                     <div class="modal-content">
                        
                       <div class="modal-header">
 
-                        <h4 class="modal-title"> <?php 
-                            session_start();
-                            if(isset($_SESSION['email'])){
-                                echo  "¡Bienvenido ".$_SESSION["email"];
-                            }else{
-                                echo "¡Bienvenidos a EMPRESAURIOS GAMING!";
-                            }
-                            
+                        <h4 class="modal-title"> 
+                        
+                        	<!-- Cambia texto si estas conectado -->
+                        	
+                        	<?php 
+                                session_start();
+                                if(isset($_SESSION['email'])){
+                                    echo  "¡Bienvenido ".$_SESSION["email"];
+                                }else{
+                                    echo "¡Bienvenidos a EMPRESAURIOS GAMING!";
+                                }
+                                
                             ?>
 						</h4>
 
@@ -48,15 +55,20 @@
 
                       </div>
                       <div class="modal-body">
+                      
+                        <!-- Logo que te envia al login -->
+                        
                         <a href="View/login.html" ><img id="modal-img" src="View/img/empresauiros_logo.png" /></a><br><br>
                         Clicka en la imagen de arriba para empezar con tu experiencia gamer
                       </div>
                     </div>
                 </div>
             </div>
-
+            
+	<!-- Navbar -->
+	
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       
+        <!-- Logo -->
         <div class="logo_titulo">
             <img id="logo" src="View/img/empresauiros_logo.png" />
             <img id="titulo" src="View/img/title.png" />
@@ -69,25 +81,37 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+          
+            <!-- Boton -->
+            
             <li class="nav-item active">
               <a class="nav-link" href="#">Noticias <span class="sr-only">(current)</span></a>
             </li>
+            
+            <!-- Boton -->
+            
             <li class="nav-item">
               <a class="nav-link" href="View/pago.html">Centro</a>
             </li>
+            
+            <!-- Dropdown -->
+            
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                
+                <!-- Cambia texto si estas conectado -->
+                
                 <?php 
-                
-                
-                if(isset($_SESSION['email'])){
-                    echo $_SESSION["email"];
-                }else{
                     
-                    echo "Usuario";
-                }
+                    if(isset($_SESSION['email'])){
+                        echo $_SESSION["email"];
+                    }else{
+                        
+                        echo "Usuario";
+                    }
                     
                 ?>
+                
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Perfil</a>
@@ -96,6 +120,11 @@
                 <a id="logout" class="dropdown-item">Cerrar Sesión </a>
               </div>
             </li>
+            
+            <!-- Fin Dropdown -->
+            
+            <!-- Iconos de redes sociales -->
+            
             <li class="redes nav-item">
               <img src="View/img/insta_icon.png" />
               <img src="View/img/twit_icon.png" />
@@ -104,7 +133,9 @@
           </ul>         
         </div>
       </nav>
-
+	  <!-- Fin navbar -->
+	  
+	  <!-- Carousel -->
 
       <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
@@ -126,7 +157,11 @@
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="sr-only">Next</span>
             </a>
-          </div>
+       </div>
+        
+        <!-- Fin Carousel -->
+        
+        <!-- Texto -->
         
         <div class="midel-text">
         <b>¿QUÉ ES EMPRESAURIOS GAMING CENTER?</b><br>
@@ -136,26 +171,9 @@
         electrónicos de manera profesional.
         </div>
 
-            <!-- <div class="triple-text row justify-content-center">
-                <div class="col col-1">
-                    <img src="img/empresauiros_logo.png" />
-                </div>
-                <div class="col col-3">
-                    <b>GAMING</b><br>
-                    Nuestro centro aúna todo lo que un gamer busca para su diversión y desarrollo; comunidad, ordenadores gaming de última generación, la mejor conexión a internet o los mismos periféricos que usan los profesionales.
-                </div>
-                <div class="col col-3">
-                    <b>COMPETICIÓN</b><br>
-                    En Elite encontrarás un lugar único donde desarrollar tus habilidades como jugador así como un rincón donde poder disputar y vivir la competición como nunca antes la habías experimentado.
-                </div>
-                <div class="col col-3 ">
-                    <b>E-SPORTS</b><br>
-                    Los deportes electrónicos son el centro de nuestro modelo de negocio, si buscas vivir experiencias únicas, sensaciones nunca antes vividas, sentimientos que no sabías que existían, Elite Gaming Center es tu centro de eSports.
-                </div>
-                <div class="col col-1 ">
-                <img src="img/empresauiros_logo.png" />
-                </div>
-            </div> -->
+        
+
+		<!-- 3 textos en un div -->
 
         <div class="triple-text">
                     
