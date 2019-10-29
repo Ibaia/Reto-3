@@ -60,6 +60,7 @@ class usuarioModel extends usuarioClass{
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	
+	
 	//Insert Usuarios
 	public function insert(){
         

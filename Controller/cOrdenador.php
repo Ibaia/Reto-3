@@ -9,5 +9,3 @@ $listaOrdenadoresJson=$ordenador->getListJsonString();
 echo $listaOrdenadoresJson;
 
 unset ($ordenador);
-
-?>

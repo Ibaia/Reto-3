@@ -30,6 +30,7 @@ $(document).ready(function() {
             dataType: "json",  //type of the result
             
             success: function(result){
+
                 console.log(result);
             
                 $("#nav-info").empty();
