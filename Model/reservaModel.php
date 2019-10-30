@@ -73,21 +73,22 @@ class reservaModel extends reservaClass{
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-			$reservaFecha->setFechaUso($row['fechaUso']);
-			$reservaNombre->setNombreUsuario($row['nombreUsuario']);
-			$reservaApellido->setApellidoUsuario($row['apellidoUsuario']);
-			$reservaNumTel->setNumTel($row['numTel']);
-			$reservaDni->setDni($row['DNI']);
-			$reservaPrecio->setPrecioTotal($row['precioTotal']);
-
-        $sql="CALL spInsertUser('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
+			$reservaFecha=$this->getFechaUso();
+			$reservaNombre=$this->getNombreUsuario();
+			$reservaApellido=$this->getApellidoUsuario();
+			$reservaNumTel=$this->getNumTel();
+			$reservaDni=$this->getDni();
+			$reservaPrecio=$this->getPrecioTotal();
+			
         
-        $numFilas=$this->link->query($sql);
+        $sql="CALL spInsertReserva('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
         
-        if ($numFilas>=1){
-            return "insertado";
+        $lastId=$this->link->query($sql);
+        
+        if ($lastId>=1){
+            return $lastId;
         } else {
-            return "Error al insertar";
+            return 0;
         }
         
         $this->CloseConnect();

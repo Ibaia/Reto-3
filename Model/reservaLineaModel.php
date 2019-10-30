@@ -1,6 +1,7 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
 include_once("reservaClass.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaLineaClass.php");
 
 class reservaLineaModel extends reservaLineaClass{
 	
@@ -100,29 +101,26 @@ class reservaLineaModel extends reservaLineaClass{
 	
 	
 	//Insert Reserva
-/*	public function insert(){
+	public function insert(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-			$reservaFecha->setFechaUso($row['fechaUso']);
-			$reservaNombre->setNombreUsuario($row['nombreUsuario']);
-			$reservaApellido->setApellidoUsuario($row['apellidoUsuario']);
-			$reservaNumTel->setNumTel($row['numTel']);
-			$reservaDni->setDni($row['DNI']);
-			$reservaPrecio->setPrecioTotal($row['precioTotal']);
+        $idReserva=$this->getIdReserva();
+        $idOrdenador=$this->getIdOrdenador();
 
-        $sql="CALL spInsertUser('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
+        $sql="CALL spInsertUser($idReserva, $idOrdenador)";
         
-        $numFilas=$this->link->query($sql);
+        $numfilas=$this->link->query($sql);
         
-        if ($numFilas>=1){
-            return "insertado";
+        if ($numfilas>=1){
+            return "Insertado";
         } else {
-            return "Error al insertar";
+            return "error";
         }
         
         $this->CloseConnect();
-    } */
+    }
+    
 	/*
 	//Delete Usuarios
    	public function delete(){

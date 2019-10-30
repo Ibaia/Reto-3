@@ -1,7 +1,9 @@
+var reservasLS=localStorage['cafe'];
 
 $(document).ready(function(){
 	
-	$("#btnExecInsert").click(function(){
+
+	$("#reserva").click(function(){
 
 		var fechaUso=$("#fechaUso").val();
 		var nombreUsuario=$("#Nombre").val();
@@ -10,21 +12,24 @@ $(document).ready(function(){
 		var dni=$("#dni").val();
 		var precioTotal=$("#precioTotal").val();
 	     
+		
+		console.log(reservasLS);
+		
 	  	$.ajax({
 	       	type: "GET",
-	       	data:{'fechaUso':fechaUso, 'nombreUsuario':nombreUsuario, 'apellidoUsuario':apellidoUsuario, 'numTel':numTel, 'dni':dni, 'precioTotal':precioTotal},
-	       	url: "controller/cReservaInsert.php", 
+	       	data:{'reservasLS': reservasLS,'fechaUso':fechaUso, 'nombreUsuario':nombreUsuario, 'apellidoUsuario':apellidoUsuario, 'numTel':numTel, 'dni':dni, 'precioTotal':precioTotal},
+	       	url: "../controller/cInsertReserva.php", 
 	       	datatype: "json",  //type of the result
 	       	success: function(result){  
 	       		
 	       		console.log(result);
-	       		alert(result);
-	       		location.reload(true);  //recarga la pagina
+	       		alert(result);	       		
+	       		//location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {
 	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
 	   		}
 	    });
 	  	
+	});
 });
-}
