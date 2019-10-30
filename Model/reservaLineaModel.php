@@ -1,19 +1,19 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
-include_once("reservaClass.php");
+include_once("reservaLineaClass.php");
 
 class reservaLineaModel extends reservaLineaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectOrdenador;
+	protected $objectReserva = array();
 	
 	//Getters
 	private function getList(){
 		return $this->list;
 	}
- 	public function getObjectOrdenador(){
-        return $this->objectOrdenador;
+ 	public function getObjectReserva(){
+ 	    return $this->objectReserva;
  	}
  
 	public function OpenConnect(){
@@ -42,27 +42,27 @@ class reservaLineaModel extends reservaLineaClass{
      /*
       * gets from the ddbb all the books in the table
       */
-     $this->OpenConnect();  // konexioa zabaldu  - abrir conexión
-     $sql = "CALL spAllPcs()"; // SQL sententzia - sentencia SQL
+     $this->OpenConnect();  // konexioa zabaldu  - abrir conexion
+     $sql = "CALL spFechasByPcs()"; // SQL sententzia - sentencia SQL
      $this->list = array(); // objetuaren list atributua array bezala deklaratzen da -
      //se declara como array el atributo list del objeto
      
      $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
      // se guarda en result toda la información solicitada a la bbdd
      
-     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
          
          $new=new self();
-         $new->setId($row['idOrdenador']);
+         $new->setIdOrdenador($row['idOrdenador']);
          
-         require_once ("reservaLineaModel.php");
-         $datosReservaLinea = new reservaLineaModel();
-         $new->objectReservaFecha=$datosReservaLinea->findIdOrdenador($row['idOrdenador']);
-         // honek itzultzen digu editorialaren datua objetu baten.
+         require_once ("reservaModel.php");
+         $datosReserva = new reservaModel();
+         $new->objectReserva=$datosReserva->setFechaUso($row['fechaUso']);
+
          array_push($this->list, $new);
-     }
+     } 
      mysqli_free_result($result);
-     unset($datosReservaLinea);
+     // unset($datosReserva);
      $this->CloseConnect();
  }
  

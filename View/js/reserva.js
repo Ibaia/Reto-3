@@ -59,6 +59,23 @@ $(document).ready(function() {
     //     }
         
     // })
+     
+        $.ajax({
+            type:"GET",
+            url: "../Controller/cReservaLinea.php", 
+            dataType: "json",  //type of the result
+            
+            success: function(result){
+
+                console.log(result);
+            
+                // Code here
+            
+                },
+                error : function(xhr) {
+                    alert("An error occured: " + xhr.status + " " + xhr.statusText);
+                }
+        });
 
     /* estado de los ordenadores según su fecha de reserva */
     $('#dateButton').click(function () {
@@ -93,6 +110,9 @@ $(document).ready(function() {
             });
         }  
     });
+    
+    
+    
     /* si el dropdown está vacio muestra 'vacio' */
     if($('.dropdown-menu li').length==0){
         $('.dropdown-menu').append('<li id="vacio"><a href="#">-- Vacio --</a></li>');
@@ -134,7 +154,7 @@ $(document).ready(function() {
                         if(mensaje == true){
                             $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
                             $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img href="#" src="./img/quit.png" /></a></li>');
->>>>>>> branch 'Master_branch' of https://github.com/Ibaia/Reto-3.git
+
                         }else{
                             alert("El ordenador ya ha sido seleccionado anteriormente");
                         }

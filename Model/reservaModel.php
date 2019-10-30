@@ -6,15 +6,15 @@ class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectOrdenador;
+	// protected $objectOrdenador;
 	
 	//Getters
 	private function getList(){
 		return $this->list;
 	}
- 	public function getObjectOrdenador(){
+ 	/* public function getObjectOrdenador(){
         return $this->objectOrdenador;
- 	}
+ 	} */
  
 	public function OpenConnect(){
     $konDat=new connect_data();
@@ -66,6 +66,24 @@ class reservaModel extends reservaClass{
 		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
+	
+	
+	public function findFechaReserva($idReserva)
+	{
+
+	    $this->OpenConnect();
+	    $sql = "CALL spFindFechaUsoByIdReserva($idReserva)";
+	    
+	    $result = $this->link->query($sql);
+	    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+	        
+	        $this->setFechaUso($row['fechaUso']);   
+	    }
+	    mysqli_free_result($result);
+	    $this->CloseConnect();
+ 
+	    return $this;
+	} 
 	
 	
 	//Insert Reserva
