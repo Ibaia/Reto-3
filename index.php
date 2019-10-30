@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 
 
@@ -15,16 +12,6 @@
     <link href="view/css/index.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="img/dino.png" />
     <title>Home</title>
-
-   
-
-
-    <!-- <script src="View/js/js_bootstrap"></script> -->
-    <link href="View/css/index.css" rel="stylesheet" type="text/css" />
-    <script src="View/js/index.js"></script>
-    <link rel="shortcut icon" href="View/img/dino.png" />
-    <title>Home</title>
-
 </head>
 <body>
          <div id="myModal" class="modal fade">

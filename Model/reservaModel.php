@@ -113,7 +113,8 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
         
     }
-    //Update Usuarios
+
+	//Update Usuarios
 	public function update(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
@@ -126,6 +127,7 @@ class reservaModel extends reservaClass{
 		$numTelReserva=$this->getNumTel();
 		$dniReserva=$this->getDni();
 		$precioTotalReserva=$this->getPrecioTotal();
+
         $sql="CALL spUpdateReserva('$idReserva','$fechaUso','$nombreUser','$apellidoUser','$numTelReserva','$dniReserva','$precioTotalReserva')";
         
         $numFilas=$this->link->query($sql);
@@ -135,6 +137,7 @@ class reservaModel extends reservaClass{
         } else {
             return "Error al insertar";
         }
+
         $this->CloseConnect();
     }
 	

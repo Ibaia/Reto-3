@@ -7,12 +7,12 @@
 var cadena = localStorage['cafe'];
 
     if (!cadena) {
-        var json= [{"ordenadores": 1, 'fecha': ''},{"ordenadores": 2, 'fecha': ''},{"ordenadores": 3, 'fecha': ''},{"ordenadores": 4, 'fecha': ''},
+        /*var json= [{"ordenadores": 1, 'fecha': ''},{"ordenadores": 2, 'fecha': ''},{"ordenadores": 3, 'fecha': ''},{"ordenadores": 4, 'fecha': ''},
         {"ordenadores": 5, 'fecha': ''},{"ordenadores": 6, 'fecha': ''},{"ordenadores": 7, 'fecha': ''},{"ordenadores": 8, 'fecha': ''},
         {"ordenadores": 9, 'fecha': ''},{"ordenadores": 10, 'fecha': ''},{"ordenadores": 11, 'fecha': ''},{"ordenadores": 12, 'fecha': ''},
         {"ordenadores": 13, 'fecha': ''},{"ordenadores": 14, 'fecha': ''},{"ordenadores": 15, 'fecha': ''},{"ordenadores": 16, 'fecha': ''},
         {"ordenadores": 17, 'fecha': ''},{"ordenadores": 18, 'fecha': ''},{"ordenadores": 19, 'fecha': ''},{"ordenadores": 20, 'fecha': ''}]
-
+*/
         var cadena = JSON.stringify(json);
         // alert(cadena);
         localStorage['cafe'] = cadena;
@@ -28,7 +28,6 @@ $(document).ready(function() {
             dataType: "json",  //type of the result
             
             success: function(result){
-
                 console.log(result);
             
                 $("#nav-info").empty();
@@ -48,6 +47,31 @@ $(document).ready(function() {
                 }
         });
  
+	$.ajax({
+        type:"GET",
+        url: "../Controller/cOrdenador.php", 
+        dataType: "json",  //type of the result
+
+        success: function(result){
+            var ordenadores = JSON.parse(result);
+            console.log(ordenadores);
+
+            $("#nav-info").empty();
+            var newRow="";
+
+            $.each(ordenadores,function(i,localsala) {
+
+            newRow += '<div data-id="'+localsala.id+'" class="text"><br><b> N�'+(localsala.id)+'</b><br><a href="#"> <img src="img/gaming-pc.jpg" class="pcGaming" id="' +(localsala.id)+ '"/><a/><div/>'
+
+            });
+
+                $("#nav-info").append(newRow);
+
+            },
+            error : function(xhr) {
+                alert("An error occured: " + xhr.status + " " + xhr.statusText);
+            }
+    });
 
     /* carga las imagenes en el container */
     // $('#nav-info').append(function () {

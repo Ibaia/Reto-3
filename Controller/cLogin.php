@@ -1,9 +1,6 @@
 <?php
-
-
 if(isset($_POST['login'])){
     $connection = new mysqli('localhost','root','','reto3');
-
     $email = $connection->real_escape_string($_POST['emailPHP']);
     $contrasenia =$connection->real_escape_string($_POST['contraseniaPHP']);
     //$nombre =$connection->real_escape_string($_POST['nombre']);
@@ -15,8 +12,7 @@ if(isset($_POST['login'])){
         session_start();
         $_SESSION["email"]= $email;;
         echo $_SESSION["email"]= $email; 
-        
-        
+   
         //echo $_SESSION[$contrasenia]; 
         //echo ("correct");
         /*$row = mysqli_fetch_array($data, MYSQLI_ASSOC);
@@ -31,17 +27,11 @@ if(isset($_POST['login'])){
         $user->setEmail($row['email']);
         
         array_push($this->list, $user);*/
-        
-        
-       
+
         
     }else{
         //exit("failed");
         echo ("failed");
        
     }
- 
-
-}
-
 ?>
