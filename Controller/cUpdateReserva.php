@@ -1,46 +1,36 @@
 <?php
-
 include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/reservaModel.php");
-
-$usuario=new reservaModel();
-
-$id=filter_input(INPUT_GET,"id");
-
-if (isset($id))
-{
-    $usuario->setIdUsuario($id);
+$reserva=new reservaModel();
+$idReserva=filter_input(INPUT_GET,"idReserva");
+if (isset($idReserva)){
+    $reserva->setIdReserva($idReserva);
 }
-
-$nombre=filter_input(INPUT_GET,"nombre");
-if (isset($nombre))
-{
-    $usuario->setNombre($nombre);
+$fechaUso=filter_input(INPUT_GET,"fechaUso");
+if (isset($fechaUso)){
+    $reserva->setFechaUso($fechaUso);
 }
-$contrasenia= filter_input(INPUT_GET,"contrasenia");
-if (isset($contrasenia))
-{
-    $usuario->setContrasenia($contrasenia);
+$nombreUsuarioReserva= filter_input(INPUT_GET,"nombreUsuarioReserva");
+if (isset($nombreUsuarioReserva)){
+    $reserva->setNombreUsuario($nombreUsuarioReserva);
 }
-$nickName=filter_input(INPUT_GET,"nickName");
-if (isset($nickName))
-{
-    $usuario->setNickName($nickName);
+$apellidoUsuarioReserva=filter_input(INPUT_GET,"apellidoUsuarioReserva");
+if (isset($apellidoUsuarioReserva)){
+    $reserva->setApellidoUsuario($apellidoUsuarioReserva);
 }
-$residencia=filter_input(INPUT_GET,"residencia");
-if (isset($residencia))
-{
-    $usuario->setResidencia($residencia);
+$numTelReserva=filter_input(INPUT_GET,"numTelReserva");
+if (isset($numTelReserva)){
+    $reserva->setNumTel($numTelReserva);
 }
-
-$email=filter_input(INPUT_GET,"email");
-if (isset($email))
-{
-    $usuario->setEmail($email);
+$dniReserva=filter_input(INPUT_GET,"dniReserva");
+if (isset($dniReserva)){
+    $reserva->setDni($dniReserva);
 }
-
-$resultado=$usuario->Update();
-
+$precioReserva=filter_input(INPUT_GET, "precioReserva");
+if (isset($precioReserva)){
+    $reserva->setPrecioTotal($precioReserva);
+}
+//LLama al modelo para ejecutar el update
+$resultado=$reserva->update();
 echo $resultado;
-
 //header('Location: ../index.php');
 ?>
