@@ -134,7 +134,6 @@ $(document).ready(function() {
                         if(mensaje == true){
                             $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
                             $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img href="#" src="./img/quit.png" /></a></li>');
->>>>>>> branch 'Master_branch' of https://github.com/Ibaia/Reto-3.git
                         }else{
                             alert("El ordenador ya ha sido seleccionado anteriormente");
                         }
@@ -173,12 +172,5 @@ $(document).ready(function() {
         localStorage['cafe']= chain;
         window.location.reload(true);
     });
-
-    
-    
-
-
-
-
 
 });
