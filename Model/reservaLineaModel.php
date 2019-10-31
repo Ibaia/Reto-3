@@ -1,12 +1,12 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
-include_once("reservaLineaClass.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaLineaClass.php");
 
 class reservaLineaModel extends reservaLineaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectReserva = array();
+	private $objectReserva = array();
 	
 	//Getters
 	private function getList(){
@@ -43,7 +43,8 @@ class reservaLineaModel extends reservaLineaClass{
       * gets from the ddbb all the books in the table
       */
      $this->OpenConnect();  // konexioa zabaldu  - abrir conexion
-     $sql = "CALL spFechasByPcs()"; // SQL sententzia - sentencia SQL
+     $sql = "CALL spAllReservedPcs()"; // SQL sententzia - sentencia SQL
+     // $sql = "CALL spPcsByIdReserva()";
      $this->list = array(); // objetuaren list atributua array bezala deklaratzen da -
      //se declara como array el atributo list del objeto
      
@@ -54,15 +55,17 @@ class reservaLineaModel extends reservaLineaClass{
          
          $new=new self();
          $new->setIdOrdenador($row['idOrdenador']);
+         $new->setIdReserva($row['idReserva']);
          
-         require_once ("reservaModel.php");
-         $datosReserva = new reservaModel();
-         $new->objectReserva=$datosReserva->setFechaUso($row['fechaUso']);
+         require_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaModel.php");
+         $reserva = new reservaModel();
+         $reserva->setIdReserva($row['idReserva']);
+         $new->objectReserva=$reserva->findFechaReserva();
 
          array_push($this->list, $new);
      } 
      mysqli_free_result($result);
-     // unset($datosReserva);
+     unset($reserva);
      $this->CloseConnect();
  }
  
@@ -175,16 +178,21 @@ class reservaLineaModel extends reservaLineaClass{
         
         // returns the list of objects in a srting with JSON format
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
-        $arr=array();
         
-        foreach ($this->list as $objectReserva)
+        // returns the list of objects in a srting with JSON format
+        $arr=array();
+        foreach ($this->list as $object)
         {
-            $vars = get_object_vars($objectReserva);
+            $vars = $object->getObjectVars();
             
+            $objectReserva=$object->objectReserva->getObjectVars();
+            $vars['objectReserva']=$objectReserva;
+          
             array_push($arr, $vars);
         }
         return json_encode($arr);
     }
+  
 }
 
 ?>

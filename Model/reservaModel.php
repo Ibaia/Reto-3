@@ -1,6 +1,6 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
-include_once("reservaClass.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaClass.php");
 
 class reservaModel extends reservaClass{
 	
@@ -68,21 +68,22 @@ class reservaModel extends reservaClass{
 	}
 	
 	
-	public function findFechaReserva($idReserva)
+	public function findFechaReserva()
 	{
-
+	    $idReserva=$this->idReserva;
 	    $this->OpenConnect();
 	    $sql = "CALL spFindFechaUsoByIdReserva($idReserva)";
 	    
 	    $result = $this->link->query($sql);
 	    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 	        
-	        $this->setFechaUso($row['fechaUso']);   
+	        $new=new self();
+	        $new->setFechaUso($row['fechaUso']);   
 	    }
 	    mysqli_free_result($result);
 	    $this->CloseConnect();
  
-	    return $this;
+	    return $new;
 	} 
 	
 	
