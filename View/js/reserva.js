@@ -185,16 +185,15 @@ $(document).ready(function() {
 
     /* este botón ejecutará la reserva, añadiendo la fecha seleccionada a cada ordenador escogido */
     $('#reservar').click(function(){
-
+    	
         $('.dropdown-menu li').each(function(){ 
-          
             localsala[(($(this).attr('id'))-1)].fecha = $('#date').val();
         }); 
 
         /* guarda los datos en el localStorage (sobrescribe) */
         var chain= JSON.stringify(localsala);
         localStorage['cafe']= chain;
-        window.location.reload(true);
+        window.location.href= "../view/pago.html";
     });
 
 });

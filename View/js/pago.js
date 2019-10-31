@@ -1,7 +1,7 @@
 var reservasLS=localStorage['cafe'];
 
 $(document).ready(function(){
-	
+	//fillPago();
 
 	$("#reserva").click(function(){
 
@@ -11,8 +11,7 @@ $(document).ready(function(){
 		var numTel=$("#numTel").val();
 		var dni=$("#dni").val();
 		var precioTotal=$("#precioTotal").val();
-	     
-		
+
 		console.log(reservasLS);
 		
 	  	$.ajax({
@@ -32,4 +31,20 @@ $(document).ready(function(){
 	    });
 	  	
 	});
+	
+	
+
 });
+ 	/*
+//Calcular el total
+function fillPago(){
+	var numenOrdenador = "";
+	var precio = "";
+	var precioTotal = "";
+	numenOrdenador +=$( "#numOrd" ).val();
+	precio +=$( "#precioIndividual" ).val();    
+
+	precioTotal = numenOrdenador * precio;
+	$( "#precioTotal" ).val( precioTotal );
+});*/
+

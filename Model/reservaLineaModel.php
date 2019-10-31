@@ -107,12 +107,12 @@ class reservaLineaModel extends reservaLineaClass{
         
         $idReserva=$this->getIdReserva();
         $idOrdenador=$this->getIdOrdenador();
-
-        $sql="CALL spInsertUser($idReserva, $idOrdenador)";
+        echo "Antesd del insert";
+        $sql="CALL spInsertLineasReserva( $idOrdenador, $idReserva)";
+        echo "Despues del insert";
+        $status=$this->link->query($sql);
         
-        $numfilas=$this->link->query($sql);
-        
-        if ($numfilas>=1){
+        if ($this->link->affected_rows  >=1){
             return "Insertado";
         } else {
             return "error";

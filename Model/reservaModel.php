@@ -82,8 +82,12 @@ class reservaModel extends reservaClass{
 			
         
         $sql="CALL spInsertReserva('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
+       
+        $result=$this->link->query($sql);
         
-        $lastId=$this->link->query($sql);
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+            $lastId=$row['idReserva'];
+        }
         
         if ($lastId>=1){
             return $lastId;
