@@ -99,6 +99,13 @@ $(document).ready(function() {
                     }  
                 });
                 
+                $('#date').change(function(){
+                	$('.text').css('background-color', '');
+                	$('.dropdown-menu').html('<li id="vacio"><a href="#">-- Vacio --</a></li>');
+                });
+                
+                
+                
                 
                 /* acciones al clickar en cada ordenador */
                 $('.text').click(function(){
@@ -108,6 +115,8 @@ $(document).ready(function() {
                     /* comprueba si no hay fecha escogida, salta un alert */
                     if($('#date').val()==""){
                         alert('Elige una fecha');
+                    } else if($('.text:eq('+(idImg-1)+')').css('background-color')==('rgba(0, 0, 0, 0)')){
+                    	alert('Primero realice una busqueda');
                     }else{
                         /* comprueba si ya está reservado para esa fecha */
                             if($('.text:eq('+(idImg-1)+')').css('background-color')==('rgb(255, 0, 0)')){
