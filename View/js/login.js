@@ -45,7 +45,7 @@ $(document).ready(function(){
 			        	
 			        }else if(result=="failed"){
 			        	alert("Fallo");
-			        	alert("El email o la contraseÃ±a son incorrectas");
+			        	alert("El email o la contraseña son incorrectas");
 			        }
 
 			        	

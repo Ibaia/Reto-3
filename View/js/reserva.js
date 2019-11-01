@@ -1,16 +1,8 @@
 
-/* datos locales para realizar pruebas en la página */
- /* var cadena = localStorage['reservas'];
+        var cadena = JSON.stringify(json);
+        // alert(cadena);
+        localStorage['cafe'] = cadena;
 
-     if (!cadena) {
-        var json= [{"ordenadores": 1, 'fecha': ''},{"ordenadores": 2, 'fecha': ''},{"ordenadores": 3, 'fecha': ''},{"ordenadores": 4, 'fecha': ''},
-        {"ordenadores": 5, 'fecha': ''},{"ordenadores": 6, 'fecha': ''},{"ordenadores": 7, 'fecha': ''},{"ordenadores": 8, 'fecha': ''},
-        {"ordenadores": 9, 'fecha': ''},{"ordenadores": 10, 'fecha': ''},{"ordenadores": 11, 'fecha': ''},{"ordenadores": 12, 'fecha': ''},
-        {"ordenadores": 13, 'fecha': ''},{"ordenadores": 14, 'fecha': ''},{"ordenadores": 15, 'fecha': ''},{"ordenadores": 16, 'fecha': ''},
-        {"ordenadores": 17, 'fecha': ''},{"ordenadores": 18, 'fecha': ''},{"ordenadores": 19, 'fecha': ''},{"ordenadores": 20, 'fecha': ''}]
-
-        var cadena = JSON.stringify(json); 
-        localStorage['reservas'] = cadena;
 
     }
     localsala = JSON.parse(cadena); */
@@ -25,7 +17,6 @@ $(document).ready(function() {
             dataType: "json",  //type of the result
             
             success: function(result){
-
                 console.log(result);
             
                 $("#nav-info").empty();
@@ -45,6 +36,31 @@ $(document).ready(function() {
                 }
         });
  
+	$.ajax({
+        type:"GET",
+        url: "../Controller/cOrdenador.php", 
+        dataType: "json",  //type of the result
+
+        success: function(result){
+            var ordenadores = JSON.parse(result);
+            console.log(ordenadores);
+
+            $("#nav-info").empty();
+            var newRow="";
+
+            $.each(ordenadores,function(i,localsala) {
+
+            newRow += '<div data-id="'+localsala.id+'" class="text"><br><b> N�'+(localsala.id)+'</b><br><a href="#"> <img src="img/gaming-pc.jpg" class="pcGaming" id="' +(localsala.id)+ '"/><a/><div/>'
+
+            });
+
+                $("#nav-info").append(newRow);
+
+            },
+            error : function(xhr) {
+                alert("An error occured: " + xhr.status + " " + xhr.statusText);
+            }
+    });
 
     /* carga las imagenes en el container */
     // $('#nav-info').append(function () {
@@ -167,12 +183,39 @@ $(document).ready(function() {
                                     $('.text:eq('+(($(this).parent().attr('id'))-1)+')').css('background-color', 'green');
                                 });
                             }
+
                     }               
                 });
                 
                 },
                 error : function(xhr) {
                     alert("An error occured: " + xhr.status + " " + xhr.statusText);
+
+                        }); 
+                        /* si no, lo añade al dropdown y le cambia el color a naranja 'marcado' */
+                        if(mensaje == true){
+                            $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
+                            $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img href="#" src="./img/quit.png" /></a></li>');
+                        }else{
+                            alert("El ordenador ya ha sido seleccionado anteriormente");
+                        }
+                    } 
+                    /* elimina el 'vacio' una vez que un o varios elemntos hayan sido añadidos al dropdown */
+                    $('#vacio').remove();
+
+                    /* refresca la operación de eliminar un elemnto del dropdwon */
+                    $('.quit').off();
+                    /* elimina un elemento del dropdown pulsando la X */
+                    $('.quit').on('click',function(){
+                        $(this).parent().remove();
+
+                        /* si el dropdown está vacio, aparece 'vacio' */
+                        if($('.dropdown-menu li').length==0){
+                            $('.dropdown-menu').append('<li id="vacio"><a href="#">-- Vacio --</a></li>');
+                        }
+                        /* despues de eliminar un elemnto del dropdown, ese mismo elemento se volverá verde en el container, ya que ya no está seleccionado */
+                        $('.text:eq('+(($(this).parent().attr('id'))-1)+')').css('background-color', 'green');
+                    });
                 }
         });
 
@@ -196,7 +239,6 @@ $(document).ready(function() {
         localStorage['cafe']= chain;
         window.location.reload(true);
     }); */
-
     
     $("#reservar").click(function(){
     	
@@ -214,10 +256,5 @@ $(document).ready(function() {
         window.location.href='../View/pago.html';
 	  	
 });
-    
-
-
-
-
 
 });

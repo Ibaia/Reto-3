@@ -1,17 +1,18 @@
-
+var usuarios;
 //Recibir los datos de usuarios y mostrarlos
 $(document).ready(function(){
+	
 	
 	$.ajax({
 	    type:"GET",
 	    url: "../controller/cAdmin.php", 
-	    datatype: "json",  //type of the result
+	    dataType: "json",  //type of the result
 	    
 	 success: function(result){
-
-	        var usuarios = JSON.parse(result);
-
 	        console.log(result);
+
+		  	usuarios = result;
+
 	        
 	        $("#table_user").empty(); // removes all the previous content in the container
 
@@ -65,6 +66,7 @@ $(document).ready(function(){
 		
 		console.log(id);
 		alert(id);
+		
 		$.ajax({
 	       	type: "GET",
 	       	data:{ 'id':id},
@@ -97,7 +99,7 @@ $(document).ready(function(){
 	       	type: "GET",
 	       	data:{ 'id':id, 'nombre':nombre, 'contrasenia':contrasenia, 'nickName':nickName,'residencia':residencia,'email':email},
 	       	url: "../Controller/cUpdateUser.php", 
-	       	datatype: "json",  //type of the result
+	       	dataType: "text",  //type of the result
 	       	success: function(result){  
 	       		
 	       		console.log(result);
@@ -114,11 +116,11 @@ $(document).ready(function(){
 	  		
 	 });
 	
-	
+	//RESERVA
 $.ajax({
 	    type:"GET",
 	    url: "../Controller/cReserva.php", 
-	    datatype: "json",  //type of the result
+	    dataType: "text",  //type of the result
 	    
 	    success: function(result){
 	    	
@@ -175,6 +177,7 @@ function deleteReserva(id) {
 	
 	console.log(id);
 	alert(id);
+	
 	$.ajax({
        	type: "GET",
        	data:{ 'id':id},
@@ -194,25 +197,25 @@ function deleteReserva(id) {
 }
 
 //Rellenar los datos para llamar al controlador y hacer el update
-$("#btnExecUpdateReservas").click(function(){
-
-	var idReserva=$('#idReserva').val();
+$("#btnExecUpdateReserva").click(function(){
+	
+	var idReserva=$('#idUpdateReserva').val();
 	var fechaUso=$('#fechaUsoUpdateReserva').val();
-	var nombreUsuarioReserva=$('#nombreUsuarioReserva').val();
-	var apellidoUsuarioReserva=$('#apellidoUsuarioReserva').val();
-	var numTelReserva=$('#numTelReserva').val();
-	var dniReserva=$('#dniReserva').val();
-	var precioReserva=$('#precioReserva').val();
+	var nombreUsuarioReserva=$('#nombreUpdateReserva').val();
+	var apellidoUsuarioReserva=$('#apellidoUpdateReserva').val();
+	var numTelReserva=$('#numTelUpdateReserva').val();
+	var dniReserva=$('#dniUpdateReserva').val();
+	var precioReserva=$('#precioUpdateReserva').val();
 
   	$.ajax({
        	type: "GET",
        	data:{ 'idReserva':idReserva,'fechaUso':fechaUso, 'nombreUsuarioReserva':nombreUsuarioReserva, 'apellidoUsuarioReserva':apellidoUsuarioReserva, 'numTelReserva':numTelReserva,'dniReserva':dniReserva,'precioReserva':precioReserva},
-       	url: "../Controller/cUpdateUser.php", 
-       	datatype: "json",  //type of the result
+       	url: "../Controller/cUpdateReserva.php", 
+       	dataType: "text",  //type of the result
        	success: function(result){  
        		
        		console.log(result);
-
+       		alert(result);
        		location.reload(true);  //recarga la pagina
        		
        		//Boton delete
@@ -220,8 +223,14 @@ $("#btnExecUpdateReservas").click(function(){
        	},
        	error : function(xhr) {
    			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   			console.log(xhr);
    		}
-    });
+//    }).done(function(){
+//    	alert("hola");
+//    }).fail(function(){
+//    	alert("error");
+//    });
   		
- });
+  	});
+});
 });
