@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <faceted-project>
   <fixed facet="php.core.component"/>
@@ -5,3 +6,12 @@
   <installed facet="php.core.component" version="1"/>
   <installed facet="php.component" version="7.2"/>
 </faceted-project>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<faceted-project>
+  <fixed facet="php.core.component"/>
+  <fixed facet="php.component"/>
+  <installed facet="php.core.component" version="1"/>
+  <installed facet="php.component" version="7.3"/>
+</faceted-project>
+>>>>>>> branch 'Ibai_branch' of https://github.com/Ibaia/Reto-3.git
