@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 24-10-2019 a las 11:08:21
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.1.32
+-- Servidor: localhost
+-- Tiempo de generación: 02-11-2019 a las 17:39:19
+-- Versión del servidor: 10.1.41-MariaDB
+-- Versión de PHP: 7.2.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,50 +19,95 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `reto3`
+-- Base de datos: `unofpz19_reto3`
 --
-CREATE DATABASE IF NOT EXISTS `reto3` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `reto3`;
+CREATE DATABASE IF NOT EXISTS `unofpz19_reto3` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `unofpz19_reto3`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `spAllPcs`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spAllPcs` ()  NO SQL
+SELECT *
+FROM ordenadores$$
+
 DROP PROCEDURE IF EXISTS `spAllReservas`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spAllReservas` ()  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spAllReservas` ()  NO SQL
 SELECT * FROM reservas$$
 
+DROP PROCEDURE IF EXISTS `spAllReservedPcs`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spAllReservedPcs` ()  NO SQL
+SELECT *
+FROM lineasreservas$$
+
 DROP PROCEDURE IF EXISTS `spAllUsers`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spAllUsers` ()  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spAllUsers` ()  NO SQL
 SELECT * from usuarios$$
 
+DROP PROCEDURE IF EXISTS `spDeleteReserva`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spDeleteReserva` (IN `pId` INT)  NO SQL
+DELETE FROM reservas WHERE reservas.id=pId$$
+
 DROP PROCEDURE IF EXISTS `spDeleteUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spDeleteUser` (IN `pId` INT)  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spDeleteUser` (IN `pId` INT)  NO SQL
 DELETE FROM `usuarios` WHERE usuarios.id=pId$$
 
+DROP PROCEDURE IF EXISTS `spFechasByPcs`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spFechasByPcs` ()  NO SQL
+SELECT lineasreservas.idOrdenador, GROUP_CONCAT(reservas.fechaUso) AS 'fechaUso'
+FROM lineasreservas
+LEFT JOIN reservas on lineasreservas.idReserva=reservas.id
+GROUP BY lineasreservas.idOrdenador$$
+
+DROP PROCEDURE IF EXISTS `spFindFechaUsoByIdReserva`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spFindFechaUsoByIdReserva` (IN `vIdReserva` INT)  NO SQL
+SELECT reservas.fechaUso
+FROM reservas
+WHERE reservas.id=vIdReserva$$
+
 DROP PROCEDURE IF EXISTS `spInsertLineasReserva`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertLineasReserva` (IN `pIdOrdenador` INT, IN `pIdReserva` INT, IN `pNombreOrdenador` VARCHAR(50))  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spInsertLineasReserva` (IN `pIdOrdenador` INT, IN `pIdReserva` INT)  NO SQL
 BEGIN
-INSERT into lineasreservas (lineasreservas.idOrdenador, lineasreservas.idReserva, lineasreservas.nombreOrdenador)
-VALUES(pIdOrdenador, pIdReserva, pNombreOrdenador);
+INSERT into lineasreservas (lineasreservas.idOrdenador, lineasreservas.idReserva)
+VALUES(pIdOrdenador, pIdReserva);
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertReserva`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertReserva` (IN `pNombre` VARCHAR(50), IN `pApellido` VARCHAR(50), IN `pDni` VARCHAR(9), IN `pNumTel` VARCHAR(9), IN `pFechaUso` DATE, IN `pPrecioTotal` DOUBLE)  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spInsertReserva` (IN `pFechaUso` DATE, IN `pNombre` VARCHAR(50), IN `pApellido` VARCHAR(50), IN `pNumTel` VARCHAR(9), IN `pDni` VARCHAR(9), IN `pPrecioTotal` DOUBLE)  NO SQL
 BEGIN
 INSERT into reservas(reservas.fechaReserva, reservas.fechaUso, reservas.nombreUsuario, reservas.apellidoUsuario, reservas.numTel, reservas.DNI, reservas.precioTotal )
-VALUES(now(), pFechaUso, pNombre, pApellido, pNumTel, pDni, pPrecioTotal)
+VALUES(now(), pFechaUso, pNombre, pApellido, pNumTel, pDni, pPrecioTotal);
 
-;
-SELECT last_insert_id() as idFactura;
+SELECT last_insert_id() as idReserva;
 END$$
 
 DROP PROCEDURE IF EXISTS `spInsertUser`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `spInsertUser` (IN `pNombre` VARCHAR(50), IN `pContrasenia` VARCHAR(50), IN `pNickname` VARCHAR(50), IN `pResidencia` VARCHAR(50), IN `pEmail` VARCHAR(50))  NO SQL
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spInsertUser` (IN `pNombre` VARCHAR(50), IN `pContrasenia` VARCHAR(50), IN `pNickname` VARCHAR(50), IN `pResidencia` VARCHAR(50), IN `pEmail` VARCHAR(50))  NO SQL
 BEGIN
 INSERT INTO usuarios(usuarios.nombre,usuarios.contrasenia,usuarios.nickName, usuarios.residencia, usuarios.email)
 VALUES (pNombre, pContrasenia, pNickname, pResidencia, pEmail);
 END$$
+
+DROP PROCEDURE IF EXISTS `spPcsByIdReserva`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spPcsByIdReserva` ()  NO SQL
+SELECT lineasreservas.idReserva, GROUP_CONCAT(lineasreservas.idOrdenador) AS 'idOrdenador'
+FROM lineasreservas
+GROUP BY lineasreservas.idReserva$$
+
+DROP PROCEDURE IF EXISTS `spUpdateReserva`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spUpdateReserva` (IN `pId` INT, IN `pFechaUso` DATE, IN `pNombreUser` VARCHAR(50), IN `pApelidoUser` VARCHAR(50), IN `pNumTel` VARCHAR(9), IN `pDni` VARCHAR(9), IN `pPrecioTotal` DOUBLE)  NO SQL
+UPDATE reservas
+SET reservas.fechaUso = pFechaUso, reservas.nombreUsuario = pNombreUser, reservas.apellidoUsuario= pApelidoUser, reservas.numTel = pNumTel, reservas.DNI = pDni, reservas.precioTotal = pPrecioTotal
+WHERE reservas.id=pId$$
+
+DROP PROCEDURE IF EXISTS `spUpdateUser`$$
+CREATE DEFINER=`unofpz19_Ibaia`@`localhost` PROCEDURE `spUpdateUser` (IN `pId` INT, IN `pNombre` VARCHAR(50), IN `pContrasenia` VARCHAR(50), IN `pNickName` VARCHAR(50), IN `pResidencia` VARCHAR(50), IN `pEmail` VARCHAR(50))  NO SQL
+UPDATE usuarios
+SET usuarios.nombre = pNombre, usuarios.contrasenia = pContrasenia,usuarios.nickName=pNickName,usuarios.residencia=pResidencia,
+usuarios.email=pEmail
+WHERE usuarios.id=pId$$
 
 DELIMITER ;
 
@@ -119,33 +164,13 @@ INSERT INTO `ordenadores` (`id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ordenadoresfecha`
---
-
-DROP TABLE IF EXISTS `ordenadoresfecha`;
-CREATE TABLE `ordenadoresfecha` (
-  `idOrdenador` int(11) NOT NULL,
-  `fechaUso` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Volcado de datos para la tabla `ordenadoresfecha`
---
-
-INSERT INTO `ordenadoresfecha` (`idOrdenador`, `fechaUso`) VALUES
-(16, '2019-10-23'),
-(16, '2019-10-23');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `reservas`
 --
 
 DROP TABLE IF EXISTS `reservas`;
 CREATE TABLE `reservas` (
   `id` int(11) NOT NULL,
-  `fechaReserva` datetime NOT NULL DEFAULT current_timestamp(),
+  `fechaReserva` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `fechaUso` date NOT NULL,
   `nombreUsuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `apellidoUsuario` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
@@ -160,10 +185,7 @@ CREATE TABLE `reservas` (
 
 INSERT INTO `reservas` (`id`, `fechaReserva`, `fechaUso`, `nombreUsuario`, `apellidoUsuario`, `numTel`, `DNI`, `precioTotal`) VALUES
 (4, '2019-10-22 00:00:00', '2019-10-24', 'Markel ', 'Rodriguez', 554852211, '4582169C', 50),
-(7, '2019-10-22 09:33:50', '2019-10-25', '', '', 0, '', 0),
-(8, '2019-10-22 09:33:54', '2019-10-25', '', '', 0, '', 0),
-(9, '2019-10-23 08:48:03', '2019-10-24', 'Carlos', 'Isla', 555555555, '48521679V', 80),
-(10, '2019-10-23 14:20:01', '2019-10-25', 'Carlos', 'Isla', 854923654, '44444785C', 90);
+(10, '2019-10-23 14:20:01', '2019-10-25', 'Carlos', 'Isla', 6383838, '849165V', 200);
 
 -- --------------------------------------------------------
 
@@ -187,8 +209,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `nombre`, `contrasenia`, `nickName`, `residencia`, `email`) VALUES
 (4, 'Gotzon', 'sss', 'gogo', 'likitijo', 'adsdas@sada.com'),
-(29, 'Markel', 'aa', 'aa', 'aa', 'aa'),
-(30, 'Ibai', 'aaaa', 'aa', 'aa', 'aa');
+(30, 'Carlos', 'aaa', 'Patata', 'areatza', 'ibai@ibai.com'),
+(33, 'admin', 'admin', 'admin', 'admin', 'admin@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -206,13 +228,6 @@ ALTER TABLE `lineasreservas`
 --
 ALTER TABLE `ordenadores`
   ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `ordenadoresfecha`
---
-ALTER TABLE `ordenadoresfecha`
-  ADD KEY `idOrdenador` (`idOrdenador`),
-  ADD KEY `idOrdenador_2` (`idOrdenador`);
 
 --
 -- Indices de la tabla `reservas`
@@ -246,7 +261,7 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Restricciones para tablas volcadas
@@ -258,12 +273,6 @@ ALTER TABLE `usuarios`
 ALTER TABLE `lineasreservas`
   ADD CONSTRAINT `lineasreservas_ibfk_1` FOREIGN KEY (`idReserva`) REFERENCES `reservas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `lineasreservas_ibfk_2` FOREIGN KEY (`idOrdenador`) REFERENCES `ordenadores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ordenadoresfecha`
---
-ALTER TABLE `ordenadoresfecha`
-  ADD CONSTRAINT `ordenadoresfecha_ibfk_1` FOREIGN KEY (`idOrdenador`) REFERENCES `ordenadores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
