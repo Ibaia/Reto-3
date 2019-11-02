@@ -1,6 +1,6 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
-include_once("reservaClass.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaClass.php");
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaLineaClass.php");
 
 class reservaLineaModel extends reservaLineaClass{
@@ -56,7 +56,7 @@ class reservaLineaModel extends reservaLineaClass{
          $new=new self();
          $new->setId($row['idOrdenador']);
          
-         require_once ("reservaLineaModel.php");
+         require_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaLineaModel.php");
          $datosReservaLinea = new reservaLineaModel();
          $new->objectReservaFecha=$datosReservaLinea->findIdOrdenador($row['idOrdenador']);
          // honek itzultzen digu editorialaren datua objetu baten.

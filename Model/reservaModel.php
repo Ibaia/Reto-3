@@ -1,20 +1,21 @@
 <?php
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");
-include_once("reservaClass.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaClass.php");
 
 class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectOrdenador;
+	//protected $objectOrdenador;
 	
 	//Getters
 	private function getList(){
 		return $this->list;
 	}
+	/*
  	public function getObjectOrdenador(){
         return $this->objectOrdenador;
- 	}
+ 	}*/
  
 	public function OpenConnect(){
     $konDat=new connect_data();
@@ -66,7 +67,24 @@ class reservaModel extends reservaClass{
 		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
-	
+	//Devuelve las fechas por id de reserva
+	public function findFechaReserva()
+	{
+	    $idReserva=$this->idReserva;
+	    $this->OpenConnect();
+	    $sql = "CALL spFindFechaUsoByIdReserva($idReserva)";
+	    
+	    $result = $this->link->query($sql);
+	    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+	        
+	        $new=new self();
+	        $new->setFechaUso($row['fechaUso']);
+	    }
+	    mysqli_free_result($result);
+	    $this->CloseConnect();
+	    
+	    return $new;
+	} 
 	
 	//Insert Reserva
 	public function insert(){
