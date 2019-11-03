@@ -1,17 +1,15 @@
-
+		var json="";
         var cadena = JSON.stringify(json);
         // alert(cadena);
         localStorage['cafe'] = cadena;
 
-
-    }
-    localsala = JSON.parse(cadena); */
+    localsala = JSON.parse(cadena); 
 
 $(document).ready(function() {
 	
     localStorage.clear();
 
-        /*$.ajax({
+        $.ajax({
             type:"GET",
             url: "../Controller/cOrdenador.php", 
             dataType: "json",  //type of the result
@@ -34,7 +32,7 @@ $(document).ready(function() {
                 error : function(xhr) {
                     alert("An error occured: " + xhr.status + " " + xhr.statusText);
                 }
-        });*/
+        });
  
 	$.ajax({
         type:"GET",
@@ -72,14 +70,14 @@ $(document).ready(function() {
     //     }
         
     // })
-     
+	var mensaje="";
         $.ajax({
             type:"GET",
             url: "../Controller/cReservaLinea.php", 
             dataType: "json",  //type of the result
             
             success: function(result){
-
+            	
                 console.log(result);
                 // Code here
                 
@@ -125,7 +123,7 @@ $(document).ready(function() {
                 
                 /* acciones al clickar en cada ordenador */
                 $('.text').click(function(){
-                    
+                	
                     var idImg = $(this).attr('data-id');
 
                     /* comprueba si no hay fecha escogida, salta un alert */
@@ -138,7 +136,7 @@ $(document).ready(function() {
                             if($('.text:eq('+(idImg-1)+')').css('background-color')==('rgb(255, 0, 0)')){
                                 alert('EL ordenador seleccionado ya está reservado');
                             }else{
-                                var mensaje = false;
+                                 mensaje = false;
                                 var idIl = 0;
                                 /* añade el ordenador al dropdown y le cambia el color a naranja 'marcado'*/
                                 if($('.dropdown-menu li').length==0){
@@ -191,7 +189,7 @@ $(document).ready(function() {
                 error : function(xhr) {
                     alert("An error occured: " + xhr.status + " " + xhr.statusText);
 
-                        }); 
+                       
                         /* si no, lo añade al dropdown y le cambia el color a naranja 'marcado' */
                         if(mensaje == true){
                             $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
@@ -199,7 +197,6 @@ $(document).ready(function() {
                         }else{
                             alert("El ordenador ya ha sido seleccionado anteriormente");
                         }
-                    } 
                     /* elimina el 'vacio' una vez que un o varios elemntos hayan sido añadidos al dropdown */
                     $('#vacio').remove();
 
@@ -253,7 +250,7 @@ $(document).ready(function() {
         localStorage.setItem('fechaUso', fechaUso);
         localStorage.setItem('ordenadores', JSON.stringify(idOrdenador));
         
-        window.location.href='../View/pago.html';
+        window.location.href='../View/vPago.html';
 	  	
 });
 
