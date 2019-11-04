@@ -1,5 +1,11 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php");  // klase honetan gordetzen dira datu basearen datuak. erabiltzailea...
+if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
+    include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data_server.php"); 
+}else {
+    include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/connect_data.php"); 
+}
+
+
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/ordenadorClass.php");
 
 class ordenadorModel extends ordenadorClass {
