@@ -1,4 +1,4 @@
- <?php session_start();?>
+ 
 <!DOCTYPE html>
 
 
@@ -15,6 +15,7 @@
     <title>Home</title>
 </head>
 <body>
+<?php session_start();?>
          <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-login">
                     <div class="modal-content">
