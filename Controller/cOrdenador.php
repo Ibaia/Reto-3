@@ -1,5 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT']."/"."/Model/ordenadorModel.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Model/ordenadorModel.php");
 
 $ordenador= new ordenadorModel();
 $ordenador->setList(); 

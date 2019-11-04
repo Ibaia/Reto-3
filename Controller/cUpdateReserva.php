@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3/Model/reservaModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaModel.php");
 $reserva=new reservaModel();
 
 $idReserva=filter_input(INPUT_GET,"idReserva");

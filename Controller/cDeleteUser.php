@@ -1,6 +1,6 @@
 <?php
 
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3/Model/usuarioModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Model/usuarioModel.php");
 
 $usuario=new usuarioModel();
 
