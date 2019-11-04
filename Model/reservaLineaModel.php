@@ -62,7 +62,7 @@ class reservaLineaModel extends reservaLineaClass{
          $new->setIdOrdenador($row['idOrdenador']);
          $new->setIdReserva($row['idReserva']);
          
-         require_once ($_SERVER['DOCUMENT_ROOT']."/Reto3Bien/Model/reservaModel.php");
+         require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaModel.php");
          $reserva = new reservaModel();
          $reserva->setIdReserva($row['idReserva']);
          $new->objectReserva=$reserva->findFechaReserva();
