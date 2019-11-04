@@ -1,3 +1,4 @@
+ <?php session_start();?>
 <!DOCTYPE html>
 
 
@@ -20,8 +21,8 @@
                        
                       <div class="modal-header">
 
-                        <h4 class="modal-title"> <?php 
-                            session_start();
+                        <h4 class="modal-title">
+                         <?php 
                             if(isset($_SESSION['email'])){
                                 echo  "¡Bienvenido ".$_SESSION["email"];
                             }else{
