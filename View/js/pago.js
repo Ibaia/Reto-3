@@ -92,6 +92,6 @@ function fillPago(){
 	precio +=$( "#precioIndividual" ).val();    
 
 	precioTotal = numenOrdenador * precio;
-	$( "#price" ).html( precioTotal );
+	$( "#price" ).html( precioTotal+"&#8364;");
 }
 
