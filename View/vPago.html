@@ -1,44 +1,39 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
 <html>
     <head>
     <title>Pago</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" data-auto-replace-svg="nest"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!--<script src="JS/jquery-3.1.1.min.js" type="text/javascript"></script>  -->
     <link href="css/pago.css" rel="stylesheet" type="text/css" />
     </head>
 <body>
         <h2>Datos de la reserva</h2>
-<div class="row">
-  <div class="col-100">
-    <div class="container">
-      <form action="/action_page.php">
+
+      <form>
       
         <div class="row">
           <div class="col-50">
             <h3>Datos de la reserva</h3>
             <!--Nombre-->
                 <label for="nombre">Nombre</label>
-                <input type="text" id="Nombre" placeholder="Nombre">
+                <input type="text" id="nombre" placeholder="Nombre" required>
             <!--Apellido-->
                 <label for="apellido">Apellido</label>
-                <input type="text" id="Apellido" placeholder="Apellido">
+                <input type="text" id="apellido" placeholder="Apellido" required>
             <!--Apodo-->
                 <label for="Apodo">Apodo</label>
-                <input type="text" id="Apodo" placeholder="Apodo">
+                <input type="text" id="apodo" placeholder="Apodo" required>
             <!--Numero de telefono-->
                 <label for="Telefono">Telefono</label>
-                <input type="text" id="Telefono" placeholder="Telefono">
+                <input type="text" id="numTel" placeholder="987654321" onkeypress="return validateNumber(event)">
             <!--Ciudad-->
                 <label for="Ciudad">Ciudad</label>
-                <input type="text" class="form-control" id="Ciudad" placeholder="Bilbao">
-                
+                <input type="text" class="form-control" id="ciudad" placeholder="Bilbao">
+             <!--DNI-->
+                <label for="DNI">DNI</label>
+                <input type="text" class="form-control" id="dni" placeholder="48963562M">    
             <div class="row">
               <div class="col-50">
                   <!--Pais-->
@@ -57,33 +52,28 @@
             <div class="container">
                 <h4>Rerserva</h4>
                 <p>
-                    <label for="codigoPostal">Dia reservado</label>
-                    <input type="date" id="fechaUso">
+                    <label for="codigoPostal">Dia reservado</label >
+                    <input type="date" id="fechaUso" readonly>
                 </p>
                 <p>
-                    <label for="codigoPostal">Numero de ordenadores</label>
-                    <input type="text" id="numOrd">
+                    <label for="numOrd">Numero de ordenadores</label>
+                    <input type="text" id="numOrd" readonly>
                 </p>
                 <p>                    
-                    <label for="codigoPostal">Precio por ordenador</label>
+                    <label for="form-control">Precio por ordenador</label>
                     <input type="text" class="form-control" id="precioIndividual" value= "10" readonly>
                 </p>
-                <p>
-                    <label for="codigoPostal">Precio total</label>
-                    <input type="text" class="form-control" id="precioTotal"> 
-                </p>
                 <hr>
-                <p>Total <span class="price" style="color:black"></span></p>
+                <p>Total <span id="price" class="price" style="color:black"></span></p>
             </div>
           </div>
-          
         </div>
         <button id="reserva" type="button" class="btn btn-primary btn-lg btn-block">Reservar</button>
+    </form>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="js/pago.js" type="text/javascript"></script>
+<script src="js/pago.js" type="text/javascript"></script>
 </body>
 
 </html>

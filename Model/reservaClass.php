@@ -82,5 +82,9 @@ class reservaClass{
    	public function setPrecioTotal ($precioTotal){
         $this->precioTotal = $precioTotal;
     }
+    function getObjectVars(){
+        $vars=get_object_vars($this);
+        return $vars;
+    }
 }	
 ?>

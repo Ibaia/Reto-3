@@ -34,31 +34,7 @@ $(document).ready(function() {
                 }
         });
  
-	$.ajax({
-        type:"GET",
-        url: "../Controller/cOrdenador.php", 
-        dataType: "json",  //type of the result
-
-        success: function(result){
-            var ordenadores = JSON.parse(result);
-            console.log(ordenadores);
-
-            $("#nav-info").empty();
-            var newRow="";
-
-            $.each(ordenadores,function(i,localsala) {
-
-            newRow += '<div data-id="'+localsala.id+'" class="text"><br><b> N�'+(localsala.id)+'</b><br><a href="#"> <img src="img/gaming-pc.jpg" class="pcGaming" id="' +(localsala.id)+ '"/><a/><div/>'
-
-            });
-
-                $("#nav-info").append(newRow);
-
-            },
-            error : function(xhr) {
-                alert("An error occured: " + xhr.status + " " + xhr.statusText);
-            }
-    });
+	
 
     /* carga las imagenes en el container */
     // $('#nav-info').append(function () {
@@ -99,7 +75,7 @@ $(document).ready(function() {
                     }
 
                     /* compruba que la fecha escogida no sea anterior a la actual */
-                    if($('#date').val()<strDate){
+                    if($('#date').val()>strDate){
                         alert('Reservas no disponibles');
                     }else{
                     /* si el ordenador está disponible mostrará el color verde, si no, rojo */
@@ -214,7 +190,7 @@ $(document).ready(function() {
                         $('.text:eq('+(($(this).parent().attr('id'))-1)+')').css('background-color', 'green');
                     });
                 }
-        });
+        });	
 
 
     /* si el dropdown está vacio muestra 'vacio' */

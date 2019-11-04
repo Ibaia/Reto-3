@@ -5,7 +5,7 @@ $(document).ready(function(){
 	
 	$.ajax({
 	    type:"GET",
-	    url: "../controller/cAdmin.php", 
+	    url: "../Controller/cAdmin.php", 
 	    dataType: "json",  //type of the result
 	    
 	 success: function(result){

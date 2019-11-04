@@ -30,12 +30,9 @@
                             
                             ?>
 						</h4>
-
-                        
-
                       </div>
                       <div class="modal-body">
-                        <a href="View/login.html" ><img id="modal-img" src="View/img/empresauiros_logo.png" /></a><br><br>
+                        <a href="View/vLogin.html" ><img id="modal-img" src="View/img/empresauiros_logo.png" /></a><br><br>
                         Clicka en la imagen de arriba para empezar con tu experiencia gamer
                       </div>
                     </div>

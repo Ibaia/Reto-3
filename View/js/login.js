@@ -36,16 +36,16 @@ $(document).ready(function(){
 			        	alert("Correcto");
 			        	if(email=="admin@gmail.com" || contrasenia=="admin"){
 			        		alert("admin");
-			        		window.location.href="adim.html";
+			        		window.location.href="vAdmin.html";
 			        	}else{
 			        		alert("user");
-			        		window.location.href="../index.php";
+			        		window.location.href="../Index.php";
 			        		
 			        	}
 			        	
 			        }else if(result=="failed"){
 			        	alert("Fallo");
-			        	alert("El email o la contraseña son incorrectas");
+			        	alert("El email o la contraseï¿½a son incorrectas");
 			        }
 
 			        	

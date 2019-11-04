@@ -25,5 +25,10 @@ class reservaLineaClass{
     {
         $this->idOrdenador = $idOrdenador;
     }
+    
+    function getObjectVars(){
+        $vars=get_object_vars($this);
+        return $vars;
+    }
 }	
 ?>
