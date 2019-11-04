@@ -1,11 +1,11 @@
 <?php
 if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
-    include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/connect_data_server.php");
+    include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data_server.php");
 }else {
-    include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/connect_data.php");
+    include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data.php");
 }
-include_once($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/reservaClass.php");
-include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/reservaLineaClass.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaClass.php");
 
 class reservaLineaModel extends reservaLineaClass{
 	
