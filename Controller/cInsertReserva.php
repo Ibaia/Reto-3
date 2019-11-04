@@ -1,6 +1,6 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/reservaModel.php");
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3Bien/Model/reservaLineaModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3/Model/reservaModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3/Model/reservaLineaModel.php");
 
 $reserva=new reservaModel();
 

@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST['login'])){
-    $connection = new mysqli('localhost','root','','reto3');
+    $connection = new mysqli('localhost','unofpz19_Ibaia','Xz5JP+]K[A{r8Qt#J=(a','reto3');
     $email = $connection->real_escape_string($_POST['emailPHP']);
     $contrasenia =$connection->real_escape_string($_POST['contraseniaPHP']);
     //$nombre =$connection->real_escape_string($_POST['nombre']);
