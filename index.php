@@ -4,6 +4,7 @@
 
 <html lang="en">
 <head>
+<?php session_start();?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,9 +14,10 @@
     <link href="View/css/index.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="img/dino.png" />
     <title>Home</title>
+    
 </head>
 <body>
-<?php session_start();?>
+
          <div id="myModal" class="modal fade">
                 <div class="modal-dialog modal-login">
                     <div class="modal-content">
