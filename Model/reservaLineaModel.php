@@ -84,7 +84,7 @@ class reservaLineaModel extends reservaLineaClass{
      while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
          
          $new=new self();
-         $new->setIdOrdenador($row['$idOrdenador']);
+         $new->setIdOrdenador($row['idOrdenador']);
      }
      mysqli_free_result($result);
      $this->CloseConnect();
