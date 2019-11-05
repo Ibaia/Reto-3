@@ -2,7 +2,7 @@
 if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
     include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data_server.php");
 }else {
-    include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data.php");
+    include_once ($_SERVER['DOCUMENT_ROOT']."reto3Bien//Model/connect_data.php");
 }
 include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
 
@@ -63,17 +63,18 @@ class reservaModel extends reservaClass{
 			$reserva->setNumTel($row['numTel']);
 			$reserva->setDni($row['DNI']);
 			$reserva->setPrecioTotal($row['precioTotal']);
-					
+			/*	
 			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
 			$linea = new reservaLineaModel();
 			$linea->setIdReserva($row['id']);
 			$reserva->objectlinea=$linea->findOrdenadoresPorReserva();
+			*/
 			
 			array_push($this->list, $reserva);
 		}
 		
 		    mysqli_free_result($result);
-		    unset($linea);
+		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	//Devuelve las fechas por id de reserva
