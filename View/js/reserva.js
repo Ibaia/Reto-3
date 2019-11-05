@@ -62,7 +62,11 @@ $(document).ready(function() {
 
                     /* date actual */
                     var d = new Date();
-                    var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+                    if(d.getDate()>=1 && d.getDate()<=9){
+                        var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-0" + d.getDate();
+                    }else{
+                        var strDate = d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate();
+                    }
                     // $(".dropdown-menu").clear()
                     /* limpia el dropdown cada vez que se realice una nueva consulta de fecha */
                     $(".dropdown-menu").empty()
@@ -76,17 +80,16 @@ $(document).ready(function() {
                     //alert(strDate);
                     //alert($('#date').val());
                     /* compruba que la fecha escogida no sea anterior a la actual */
-                    if($('#date').val()>strDate){
-                        alert('Reservas no disponibles');
-                    }else{
-                    /* si el ordenador está disponible mostrará el color verde, si no, rojo */
+                    if($('#date').val()>=strDate){
+                                            /* si el ordenador está disponible mostrará el color verde, si no, rojo */
                     	$('.text').css('background-color', 'green');
                         $.each(result, function(i,ordenador) {
-                        		if (ordenador.objectReserva.fechaUso.match($('#date').val())) {
-                        			$('.text:eq('+(ordenador.idOrdenador-1)+')').css('background-color', 'red');
-                                }
-                                
-                        });
+                        	if (ordenador.objectReserva.fechaUso.match($('#date').val())) {
+                        		$('.text:eq('+(ordenador.idOrdenador-1)+')').css('background-color', 'red');
+                            }
+                      });
+                    }else{
+                    	alert('Reservas no disponibles');
                     }  
                 });
                 

@@ -64,6 +64,11 @@ class reservaModel extends reservaClass{
 			$reserva->setDni($row['DNI']);
 			$reserva->setPrecioTotal($row['precioTotal']);
 					
+			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/ordenadorModel.php");
+			$ordenador = new ordenadorModel();
+			$ordenador->setIdReserva($row['idReserva']);
+			$reserva->objectReserva=$ordenador->findOrdenadoresPorReserva();
+			
 			array_push($this->list, $reserva);
 		}
 		

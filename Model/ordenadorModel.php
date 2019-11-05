@@ -60,7 +60,23 @@ class ordenadorModel extends ordenadorClass {
      mysqli_free_result($result);
      $this->CloseConnect();
  }
- 
+ public function findOrdenadoresPorReserva()
+ {
+     $idReserva=$this->idReserva;
+     $this->OpenConnect();
+     $sql = "CALL spPcsByIdReserva($idReserva)";
+     
+     $result = $this->link->query($sql);
+     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+         
+         $new=new self();
+         $new->setIdOrdenador($row['$idOrdenador']);
+     }
+     mysqli_free_result($result);
+     $this->CloseConnect();
+     
+     return $new;
+ } 
  function getListJsonString() {//if Class attributes PROTECTED
      
      // returns the list of objects in a srting with JSON format
