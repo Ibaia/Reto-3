@@ -25,8 +25,9 @@
 
                         <h4 class="modal-title">
                          <?php 
-                            session_start();
+                            
                             if(isset($_SESSION['email'])){
+                                session_start();
                                 echo  "¡Bienvenido ".$_SESSION["email"];
                             }else{
                                 echo "¡Bienvenidos a EMPRESAURIOS GAMING!";
