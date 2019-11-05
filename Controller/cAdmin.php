@@ -1,5 +1,5 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/Model/usuarioModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/reto3/Model/usuarioModel.php");
 
 $usuario= new usuarioModel();
 $usuario->setList(); 
