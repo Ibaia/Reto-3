@@ -76,7 +76,7 @@ class reservaLineaModel extends reservaLineaClass{
  
  public function findOrdenadoresPorReserva()
  {
-     $idReserva=$this->idReserva;
+     $idReserva=$this->getIdReserva();
      $this->OpenConnect();
      $sql = "CALL spPcsByIdReserva($idReserva)";
      
