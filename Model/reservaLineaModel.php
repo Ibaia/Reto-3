@@ -80,8 +80,7 @@ class reservaLineaModel extends reservaLineaClass{
      $this->OpenConnect();
      $sql = "CALL spPcsByIdReserva($idReserva)";
      
-     echo "ID_RESERVA "+ $idReserva;
-     
+     /*
      $result = $this->link->query($sql);
      if  ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
          
@@ -90,8 +89,8 @@ class reservaLineaModel extends reservaLineaClass{
      }
      mysqli_free_result($result);
      $this->CloseConnect();
-     
-     return $new;
+     */
+     return "ID_RESERVA "+ $idReserva;
  } 
 	//Cargar los datos
 /*	public function setList(){
