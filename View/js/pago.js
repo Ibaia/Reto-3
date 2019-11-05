@@ -18,7 +18,7 @@ $(document).ready(function(){
 	
 	var fecha =localStorage.getItem("fechaUso");
 	var ordenadoresLength=reservas.length;
-	console.log(reservasLS);
+	//console.log(reservasLS);
 	
 	
 	$("#fechaUso").val(fecha);
@@ -36,8 +36,8 @@ $(document).ready(function(){
 		var dni=$("#dni").val();
 		var price=$("#price").text();
 
-		console.log(reservasLS);
-		console.log("Hola");
+		//console.log(reservasLS);
+		//console.log("Hola");
 		
 	  	$.ajax({
 	       	type: "GET",

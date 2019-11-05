@@ -8,7 +8,7 @@ $(document).ready(function() {
 		$.ajax({
 			url : "../Controller/cLogout.php",
 			success : function(result) {
-				alert("aaaaaaaaa");
+				alert("Session cerrada");
 				location.reload(true);  //recarga la pagina
 			},
 			error : function(result) {
