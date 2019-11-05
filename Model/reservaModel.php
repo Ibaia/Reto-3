@@ -181,7 +181,9 @@ class reservaModel extends reservaClass{
         
         foreach ($this->list as $objectReserva)
         {
-            $vars = get_object_vars($objectReserva);
+            $vars = $objectReserva->getObjectVars();
+            
+            $vars['objectlinea']=$objectReserva->objectlinea->getObjectVars();
             
             array_push($arr, $vars);
         }
