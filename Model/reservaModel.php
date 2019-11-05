@@ -27,7 +27,7 @@ class reservaModel extends reservaClass{
     {
          $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
          // mysqli klaseko link objetua sortzen da dagokion konexio datuekin
-         // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexión. 
+         // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexiÃ³n. 
     }
     catch(Exception $e)
     {
@@ -99,7 +99,7 @@ class reservaModel extends reservaClass{
 	//Insert Reserva
 	public function insert(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
         
 			$reservaFecha=$this->getFechaUso();
 			$reservaNombre=$this->getNombreUsuario();
@@ -110,7 +110,7 @@ class reservaModel extends reservaClass{
 			
         
         $sql="CALL spInsertReserva('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni', '$reservaPrecio')";
-        echo $sql;
+        //echo $sql;
         $result=$this->link->query($sql);
        
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -129,7 +129,7 @@ class reservaModel extends reservaClass{
 	//Delete Usuarios
    	public function delete(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
 
         $id=$this->getIdReserva();
         
@@ -150,7 +150,7 @@ class reservaModel extends reservaClass{
 	//Update Usuarios
 	public function update(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexi�n
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
         
         $idReserva=$this->getIdReserva();
@@ -174,18 +174,16 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
     }
 	
-    function getListJsonString() {//if Class attributes PROTECTED
+       function getListJsonString() {//if Class attributes PROTECTED
         
         // returns the list of objects in a srting with JSON format
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $objectReserva)
+        foreach ($this->list as $object)
         {
-            $vars = $objectReserva->getObjectVars();
+            $vars = get_object_vars($object);
             
-            $vars['objectlinea']=$objectReserva->objectLinea->getObjectsVars();
-            print_r( $vars['objectlinea']);
             array_push($arr, $vars);
         }
         return json_encode($arr);
