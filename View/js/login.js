@@ -23,7 +23,7 @@ $(document).ready(function(){
 	    	alert("Llamar controller");
 	    	$.ajax({
 			    type:"POST", 
-			    url: "../controller/cLogin.php", 
+			    url: "../Controller/cLogin.php", 
 			    dataType: "text",  //type of the result
 			    data:{'login':1,'emailPHP':email,'contraseniaPHP':contrasenia},
 			    success: function(result){
