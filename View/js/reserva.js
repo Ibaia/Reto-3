@@ -73,8 +73,8 @@ $(document).ready(function() {
                     } else{
                         $('#vacio').remove();
                     }
-                    alert(strDate);
-                    alert($('#date').val());
+                    //alert(strDate);
+                    //alert($('#date').val());
                     /* compruba que la fecha escogida no sea anterior a la actual */
                     if($('#date').val()>strDate){
                         alert('Reservas no disponibles');
