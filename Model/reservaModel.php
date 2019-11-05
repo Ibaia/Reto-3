@@ -110,7 +110,7 @@ class reservaModel extends reservaClass{
 			
         
         $sql="CALL spInsertReserva('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni', '$reservaPrecio')";
-        echo $sql;
+        //echo $sql;
         $result=$this->link->query($sql);
        
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -180,12 +180,10 @@ class reservaModel extends reservaClass{
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $objectReserva)
+        foreach ($this->list as $object)
         {
-            $vars = $objectReserva->getObjectVars();
+            $vars = get_object_vars($object);
             
-            $vars['objectlinea']=$objectReserva->objectLinea->getObjectsVars();
-            print_r( $vars['objectlinea']);
             array_push($arr, $vars);
         }
         return json_encode($arr);

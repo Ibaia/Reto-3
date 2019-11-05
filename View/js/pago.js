@@ -55,7 +55,9 @@ $(document).ready(function(){
 	       	success: function(result){  
 	       		
 	       		console.log(result);
-	       		alert(result);	       		
+	       		alert(result);
+	       		location.replace('../index.php');  
+	       		
 	       		//location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {
