@@ -39,7 +39,7 @@ $(document).ready(function(){
 			        		window.location.href="vAdmin.html";
 			        	}else{
 			        		alert("user");
-			        		window.location.href="../Index.php";
+			        		window.location.href="../index.php";
 			        		
 			        	}
 			        	
