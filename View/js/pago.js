@@ -54,9 +54,9 @@ $(document).ready(function(){
 	       	dataType: "text",  //type of the result
 	       	success: function(result){  
 	       		
-	       		console.log(result);
-	       		alert(result);	
-			location.replace('../index.php');
+	       	console.log(result);
+          alert(result);	
+			    location.replace('../index.php');
 	       		//location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {
