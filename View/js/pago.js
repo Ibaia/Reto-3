@@ -54,31 +54,16 @@ $(document).ready(function(){
 	       	dataType: "text",  //type of the result
 	       	success: function(result){  
 	       		
-	       		console.log(result);
-	       		alert(result);
-	       		location.replace('../index.php');  
-	       		
+	       	console.log(result);
+          alert(result);	
+			    location.replace('../index.php');
 	       		//location.reload(true);  //recarga la pagina
 	       	},
 	       	error : function(xhr) {
 	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
 	   		}
 	    });	  	
-//	  	$.ajax({
-//	       	type: "GET",
-//	       	data:{'reservasLS': reservasLS,'fechaUso':fechaUso, 'nombreUsuario':nombreUsuario, 'apellidoUsuario':apellidoUsuario, 'numTel':numTel, 'dni':dni, 'price':price},
-//	       	url: "../Controller/cInsertReserva.php", 
-//	       	dataType: "json",  //type of the result
-//	       	success: function(result){  
-//	       		
-//	       		console.log(result);
-//	       		alert(result);	       		
-//	       		//location.reload(true);  //recarga la pagina
-//	       	},
-//	       	error : function(xhr) {
-//	   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
-//	   		}
-//	    });
+
 	  	
 	});
 	
