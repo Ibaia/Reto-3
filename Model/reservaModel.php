@@ -10,16 +10,16 @@ class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectlinea;
+	protected $objectlinea=array();
 	
 	//Getters
 	private function getList(){
 		return $this->list;
 	}
-	/*
- 	public function getObjectOrdenador(){
-        return $this->objectOrdenador;
- 	}*/
+	
+ 	public function getObjectlinea(){
+ 	    return $this->objectlinea;
+ 	}
  
 	public function OpenConnect(){
     $konDat=new connect_data();
