@@ -10,7 +10,7 @@ class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectlinea=array();
+	protected $objectlinea;
 	
 	//Getters
 	private function getList(){
@@ -66,7 +66,7 @@ class reservaModel extends reservaClass{
 					
 			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
 			$linea = new reservaLineaModel();
-			$linea->setIdReserva($row['idReserva']);
+			$linea->setIdReserva($row['id']);
 			$reserva->objectlinea=$linea->findOrdenadoresPorReserva();
 			
 			array_push($this->list, $reserva);

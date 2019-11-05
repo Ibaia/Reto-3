@@ -11,7 +11,7 @@ class reservaLineaModel extends reservaLineaClass{
 	
 	private $link;
 	private $list = array();
-	private $objectReserva = array();
+	private $objectReserva;
 	
 	//Getters
 	private function getList(){
@@ -81,7 +81,7 @@ class reservaLineaModel extends reservaLineaClass{
      $sql = "CALL spPcsByIdReserva($idReserva)";
      
      $result = $this->link->query($sql);
-     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+     if  ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
          
          $new=new self();
          $new->setIdOrdenador($row['idOrdenador']);
