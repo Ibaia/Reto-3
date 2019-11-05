@@ -120,18 +120,17 @@ $(document).ready(function(){
 $.ajax({
 	    type:"GET",
 	    url: "../Controller/cReserva.php", 
-	    dataType: "text",  //type of the result
+	    dataType: "json",  //type of the result
 	    
 	    success: function(result){
-	    	
-	    	var reserva = JSON.parse(result);
-	    	console.log(reserva);
+	    
+	    	console.log(result);
 	    
 	    	$("#table_reserve").empty();
 	    	var newRow="";
 	    	
 	    	newRow +="<tr><th class='col'>ID</th><th class='col'>FECHA DE USO</th><th class='col'>NOMBRE USUARIO</th><th class='col'>APELLIDO USUARIO</th><th class='col'>NUMERO DE TELEFONO</th><th class='col'>DNI</th><th class='col'>PRECIO</th></tr>";
-	    	$.each(reserva,function(index,info) { 
+	    	$.each(result,function(index,info) { 
 
 	    	newRow += '<tr>'
 	    	newRow += '<td class="col">'+info.idReserva+'</td>'
