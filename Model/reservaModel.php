@@ -183,8 +183,8 @@ class reservaModel extends reservaClass{
         {
             $vars = $objectReserva->getObjectVars();
             
-            $vars['objectlinea']=$objectReserva->objectlinea->getObjectVars();
-            
+            $vars['objectlinea']=$objectReserva->objectLinea->getObjectsVars();
+            print_r( $vars['objectlinea']);
             array_push($arr, $vars);
         }
         return json_encode($arr);
