@@ -41,6 +41,7 @@
                                 echo  "¡Bienvenido ".$_SESSION["email"];
                             }else{
                                 echo "¡Bienvenidos a EMPRESAURIOS GAMING!";
+                                echo "sdfsdf";
                             }
                             
                             ?>
