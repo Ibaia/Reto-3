@@ -10,7 +10,7 @@ class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	//protected $objectOrdenador;
+	protected $objectlinea;
 	
 	//Getters
 	private function getList(){
@@ -64,16 +64,16 @@ class reservaModel extends reservaClass{
 			$reserva->setDni($row['DNI']);
 			$reserva->setPrecioTotal($row['precioTotal']);
 					
-			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/ordenadorModel.php");
-			$ordenador = new ordenadorModel();
-			$ordenador->setIdReserva($row['idReserva']);
-			$reserva->objectReserva=$ordenador->findOrdenadoresPorReserva();
+			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
+			$linea = new reservaLineaModel();
+			$linea->setIdReserva($row['idReserva']);
+			$reserva->objectlinea=$linea->findOrdenadoresPorReserva();
 			
 			array_push($this->list, $reserva);
 		}
 		
 		    mysqli_free_result($result);
-		    unset($reserva);
+		    unset($linea);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	//Devuelve las fechas por id de reserva
