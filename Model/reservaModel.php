@@ -5,7 +5,7 @@ if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
     include_once ($_SERVER['DOCUMENT_ROOT']."reto3Bien//Model/connect_data.php");
 }
 include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
-include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaClass.php");
 
 class reservaModel extends reservaClass{
 	
@@ -182,11 +182,10 @@ class reservaModel extends reservaClass{
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $object)
+        foreach ($this->list as $objectReserva)
         {
-            $vars = get_object_vars($object);
+            $vars = get_object_vars($objectReserva);
             
-
             //print_r( $objectReserva->objectlinea);
             
             $vars['objectlinea']=$objectReserva->objectlinea->getObjectVars();

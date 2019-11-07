@@ -73,7 +73,7 @@ class reservaLineaModel extends reservaLineaClass{
      unset($reserva);
      $this->CloseConnect();
  }
- 
+ /*
  public function findOrdenadoresPorReserva()
  {
      $idReserva=$this->getIdReserva();
@@ -92,9 +92,10 @@ class reservaLineaModel extends reservaLineaClass{
      } 
      mysqli_free_result($result);
      $this->CloseConnect();
-     return $new; 
+     return $new;
+<<<<<<< HEAD
+     
  } 
- 
 	//Cargar los datos
 /*	public function setList(){
 		
@@ -124,7 +125,11 @@ class reservaLineaModel extends reservaLineaClass{
 		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	} */
-		
+	
+=======
+ } */
+>>>>>>> branch 'Ibai_branch' of https://github.com/Ibaia/Reto-3.git
+	
 	//Insert Reserva
 	public function insert(){
         
