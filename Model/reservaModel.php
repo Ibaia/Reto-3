@@ -5,12 +5,13 @@ if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
     include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data.php");
 }
 include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
+include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
 
 class reservaModel extends reservaClass{
 	
 	private $link;
 	private $list = array();
-	protected $objectlinea;
+	private $objectlinea;
 	
 	//Getters
 	private function getList(){
@@ -53,7 +54,7 @@ class reservaModel extends reservaClass{
 		
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			
-			$reserva= new reservaClass();
+			$reserva= new reservaModel();
 			
 			$reserva->setIdReserva($row['id']);
 			$reserva->setFechaReserva($row['fechaReserva']);
@@ -67,13 +68,15 @@ class reservaModel extends reservaClass{
 			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
 			$linea = new reservaLineaModel();
 			$linea->setIdReserva($row['id']);
-			$reserva->objectlinea=$linea->findOrdenadoresPorReserva();
 			
+			$reserva->objectlinea=$linea->findOrdenadoresPorReserva();
+			//print_r($reserva->objectlinea);
 			array_push($this->list, $reserva);
 		}
 		
 		    mysqli_free_result($result);
 		    unset($linea);
+		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	//Devuelve las fechas por id de reserva
@@ -183,8 +186,10 @@ class reservaModel extends reservaClass{
         {
             $vars = $objectReserva->getObjectVars();
             
-            $vars['objectlinea']=$objectReserva->objectLinea->getObjectsVars();
-            print_r( $vars['objectlinea']);
+            //print_r( $objectReserva->objectlinea);
+            
+            $vars['objectlinea']=$objectReserva->objectlinea->getObjectVars();
+            
             array_push($arr, $vars);
         }
         return json_encode($arr);

@@ -82,15 +82,18 @@ class reservaLineaModel extends reservaLineaClass{
      
      
      $result = $this->link->query($sql);
+     $new=new self();
+     
      if  ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-         
-         $new=new self();
+
+         $new->setIdReserva($row['idReserva']);
          $new->setIdOrdenador($row['idOrdenador']);
+         
      } 
      mysqli_free_result($result);
      $this->CloseConnect();
-     
      return $new;
+     
  } 
 	//Cargar los datos
 /*	public function setList(){
@@ -225,5 +228,6 @@ class reservaLineaModel extends reservaLineaClass{
         }
         return json_encode($arr);
     }
+    
 }
 ?>

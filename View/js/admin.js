@@ -123,13 +123,13 @@ $.ajax({
 	    dataType: "json",  //type of the result
 	    
 	    success: function(result){
-	    
+	    	
 	    	console.log(result);
 	    
 	    	$("#table_reserve").empty();
 	    	var newRow="";
 	    	
-	    	newRow +="<tr><th class='col'>ID</th><th class='col'>FECHA DE USO</th><th class='col'>NOMBRE USUARIO</th><th class='col'>APELLIDO USUARIO</th><th class='col'>NUMERO DE TELEFONO</th><th class='col'>DNI</th><th class='col'>PRECIO</th></tr>";
+	    	newRow +="<tr><th class='col'>ID</th><th class='col'>FECHA DE USO</th><th class='col'>NOMBRE USUARIO</th><th class='col'>APELLIDO USUARIO</th><th class='col'>NUMERO DE TELEFONO</th><th class='col'>DNI</th><th class='col'>PRECIO</th><th class='col'>Ordenadores</th></tr>";
 	    	$.each(result,function(index,info) { 
 
 	    	newRow += '<tr>'
@@ -140,6 +140,7 @@ $.ajax({
 	    	newRow += '<td class="col">'+info.numTel+'</td>'
 	    	newRow += '<td class="col">'+info.dni+'</td>'
 	    	newRow += '<td class="col">'+info.precioTotal+'&#8364;</td>'
+	    	newRow += '<td class="col">'+info.objectlinea.idOrdenador+'</td>'
 	    	newRow += "<td class='col'><button class='btnDeleteReserva btn-danger' value='"+info.idReserva+"'><i class='fas fa-trash-alt'></i></button></td>"
             newRow += "<td class='col'><button class='btnUpdateReserva btn-success' value='"+info.idReserva+"' data-toggle='modal' data-target='#updateReserva'><i class='fas fa-edit'></i></button></td>"
 	    	});
