@@ -18,7 +18,7 @@ $(document).ready(function(){
 /*ajax*/
 $("#btnInsert").click(function(){
 	
-	
+	var confirm_password = document.getElementById("confirm_password").value;
 	
 	var nombre = $("#nombre").val();
 	var contrasenia= $("#contrasenia").val();
@@ -27,7 +27,9 @@ $("#btnInsert").click(function(){
 	var email =$("#email").val();
 	
 	
-	
+	if(contrasenia != confirm_password){
+		return false;
+	}else{
 		$.ajax({
 		   	type:"GET",
 		   	data: {"nombre":nombre, "contrasenia":contrasenia, "nickName":nickName, "residencia":residencia, "email":email},
@@ -45,7 +47,7 @@ $("#btnInsert").click(function(){
 					alert("An error occured: " + xhr.status + " " + xhr.statusText);
 				}
 			}); 	
-	
+	}
 
 });
 
