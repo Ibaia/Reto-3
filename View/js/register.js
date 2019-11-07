@@ -28,7 +28,9 @@ $("#btnInsert").click(function(){
 	
 	
 	if(contrasenia != confirm_password){
+		alert("fallo");
 		return false;
+		
 	}else{
 		$.ajax({
 		   	type:"GET",
