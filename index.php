@@ -92,7 +92,7 @@
                 <a class="dropdown-item" href="#">Perfil</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <div class="dropdown-divider"></div>
-                <a id="logout" class="dropdown-item">Cerrar Sesión </a>
+                <a id="logout" class="dropdown-item" href="View/vLogin.html">Cerrar Sesión </a>
               </div>
             </li>
             <li class="redes nav-item">
