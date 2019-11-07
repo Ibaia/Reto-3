@@ -42,6 +42,7 @@ $("#btnInsert").click(function(){
 		   		//alert(result);
 		   		console.log(result);
 		   		alert(result);
+		   		return true;
 		   		//location.reload(true)
 		   
 		   	},
