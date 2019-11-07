@@ -79,8 +79,6 @@ if (isset($reservasLS)){
         }
 
 }
-
-
 echo $resultado;
 //header('Location: ../index.php');
 ?>

@@ -2,7 +2,7 @@
 if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
     include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data_server.php");
 }else {
-    include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data.php");
+    include_once ($_SERVER['DOCUMENT_ROOT']."reto3Bien//Model/connect_data.php");
 }
 include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
 include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
@@ -28,7 +28,7 @@ class reservaModel extends reservaClass{
     {
          $this->link=new mysqli($konDat->host,$konDat->userbbdd,$konDat->passbbdd,$konDat->ddbbname);
          // mysqli klaseko link objetua sortzen da dagokion konexio datuekin
-         // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexión. 
+         // se crea un nuevo objeto llamado link de la clase mysqli con los datos de conexiÃ³n. 
     }
     catch(Exception $e)
     {
@@ -64,7 +64,7 @@ class reservaModel extends reservaClass{
 			$reserva->setNumTel($row['numTel']);
 			$reserva->setDni($row['DNI']);
 			$reserva->setPrecioTotal($row['precioTotal']);
-					
+			
 			require_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaModel.php");
 			$linea = new reservaLineaModel();
 			$linea->setIdReserva($row['id']);
@@ -75,7 +75,7 @@ class reservaModel extends reservaClass{
 		}
 		
 		    mysqli_free_result($result);
-		    unset($linea);
+            
 		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
@@ -101,7 +101,7 @@ class reservaModel extends reservaClass{
 	//Insert Reserva
 	public function insert(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
         
 			$reservaFecha=$this->getFechaUso();
 			$reservaNombre=$this->getNombreUsuario();
@@ -112,7 +112,7 @@ class reservaModel extends reservaClass{
 			
         
         $sql="CALL spInsertReserva('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni', '$reservaPrecio')";
-        echo $sql;
+        //echo $sql;
         $result=$this->link->query($sql);
        
         if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
@@ -131,7 +131,7 @@ class reservaModel extends reservaClass{
 	//Delete Usuarios
    	public function delete(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexiÃ³n
 
         $id=$this->getIdReserva();
         
@@ -152,7 +152,7 @@ class reservaModel extends reservaClass{
 	//Update Usuarios
 	public function update(){
         
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexi�n
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
         
         $idReserva=$this->getIdReserva();
@@ -176,16 +176,17 @@ class reservaModel extends reservaClass{
         $this->CloseConnect();
     }
 	
-    function getListJsonString() {//if Class attributes PROTECTED
+       function getListJsonString() {//if Class attributes PROTECTED
         
         // returns the list of objects in a srting with JSON format
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $objectReserva)
+        foreach ($this->list as $object)
         {
-            $vars = $objectReserva->getObjectVars();
+            $vars = get_object_vars($object);
             
+
             //print_r( $objectReserva->objectlinea);
             
             $vars['objectlinea']=$objectReserva->objectlinea->getObjectVars();

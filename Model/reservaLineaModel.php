@@ -2,7 +2,7 @@
 if ($_SERVER['SERVER_NAME'] == "uno.fpz1920.com") {
     include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data_server.php");
 }else {
-    include_once ($_SERVER['DOCUMENT_ROOT']."/Model/connect_data.php");
+    include_once ($_SERVER['DOCUMENT_ROOT']."reto3Bien//Model/connect_data.php");
 }
 include_once($_SERVER['DOCUMENT_ROOT']."/Model/reservaClass.php");
 include_once ($_SERVER['DOCUMENT_ROOT']."/Model/reservaLineaClass.php");
@@ -92,9 +92,9 @@ class reservaLineaModel extends reservaLineaClass{
      } 
      mysqli_free_result($result);
      $this->CloseConnect();
-     return $new;
-     
+     return $new; 
  } 
+ 
 	//Cargar los datos
 /*	public function setList(){
 		
@@ -124,8 +124,7 @@ class reservaLineaModel extends reservaLineaClass{
 		    unset($reserva);
         	$this->CloseConnect();  //Cerrar la conexion
 	} */
-	
-	
+		
 	//Insert Reserva
 	public function insert(){
         
@@ -145,56 +144,7 @@ class reservaLineaModel extends reservaLineaClass{
         }
         
         $this->CloseConnect();
-    }
-    
-	/*
-	//Delete Usuarios
-   	public function delete(){
-        
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
-
-        $id=$this->getIdUsuario();
-        
-        $sql="CALL spDeleteUser($id)";
-        
-        $numFilas=$this->link->query($sql); 
-        
-        if ($numFilas>=1)
-        {
-            echo "borrado";
-        } else {
-            echo "Error al borrar";
-        }
-        $this->CloseConnect();
-        
-    }
-    
-	//Update Usuarios
-	public function Update(){
-        
-        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
-        
-        
-        $nombreUpdate=$this->getNombre();
-		$contraseniaUpdate=$this->getContrasenia();
-		$nickNameUpdate=$this->getNickName();
-		$residenciaUpdate=$this->getResidencia();
-		$emailUpdate=$this->getEmail();
-		$numTelUpdate=$this->getNumTel();
-
-        $sql="CALL spUpdateUser('$nombreUpdate','$contraseniaUpdate','$nickNameUpdate','$residenciaUpdate','$emailUpdate',$numTelUpdate)";
-        
-        $numFilas=$this->link->query($sql);
-        
-        if ($numFilas>=1){
-            return "insertado";
-        } else {
-            return "Error al insertar";
-        }
-        
-        $this->CloseConnect();
-    }*/
-	
+    }	
     function getListJsonStringReservas() {//if Class attributes PROTECTED
         
         // returns the list of objects in a srting with JSON format
