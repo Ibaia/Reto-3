@@ -27,9 +27,7 @@ $("#btnInsert").click(function(){
 	var email =$("#email").val();
 	
 	
-	if(nombre=="" || contrasenia == "" || nickName=="" || residencia=="" || email ==""){
-		return false;
-	}else{
+	
 		$.ajax({
 		   	type:"GET",
 		   	data: {"nombre":nombre, "contrasenia":contrasenia, "nickName":nickName, "residencia":residencia, "email":email},
@@ -47,7 +45,7 @@ $("#btnInsert").click(function(){
 					alert("An error occured: " + xhr.status + " " + xhr.statusText);
 				}
 			}); 	
-	}
+	
 
 });
 
