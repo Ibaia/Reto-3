@@ -18,16 +18,18 @@ $(document).ready(function(){
 /*ajax*/
 $("#btnInsert").click(function(){
 	
+	var password = document.getElementById("contrasenia").value;
+	var confirm_password = document.getElementById("confirm_password").value;
+	
 	var nombre = $("#nombre").val();
 	var contrasenia= $("#contrasenia").val();
 	var nickName= $("#apodo").val();
 	var residencia= $("#residencia").val();
 	var email =$("#email").val();
 	
-	var password = document.getElementById("contrasenia").value;
-	var confirm_password = document.getElementById("confirm_password").value;
+	
 	if(password != confirm_password){
-		
+		return false;
 	}else{
 		$.ajax({
 		   	type:"GET",
