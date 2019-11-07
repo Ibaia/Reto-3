@@ -27,8 +27,8 @@ $("#btnInsert").click(function(){
 	var email =$("#email").val();
 	
 	
-	if(contrasenia != confirm_password){
-		
+	if(nombre == "" || contrasenia =="" || nickName =="" || residencia=="" || email==""){
+		alert("Rellena todos los campos");
 		return false;
 		
 	}else{
