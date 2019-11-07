@@ -27,7 +27,7 @@ $("#btnInsert").click(function(){
 	var email =$("#email").val();
 	
 	
-	if(nombre == "" || contrasenia =="" || nickName =="" || residencia=="" || email==""){
+	if(nombre == "" || contrasenia =="" || nickName =="" || residencia=="" || email=="" || contrasenia != confirm_password){
 		alert("Rellena todos los campos");
 		return false;
 		
