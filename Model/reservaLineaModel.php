@@ -73,7 +73,7 @@ class reservaLineaModel extends reservaLineaClass{
      unset($reserva);
      $this->CloseConnect();
  }
- /*
+ 
  public function findOrdenadoresPorReserva()
  {
      $idReserva=$this->getIdReserva();
@@ -95,6 +95,7 @@ class reservaLineaModel extends reservaLineaClass{
      return $new;
      
  } 
+ 
 	//Cargar los datos
 /*	public function setList(){
 		
