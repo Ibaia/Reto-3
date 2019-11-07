@@ -18,7 +18,7 @@ $(document).ready(function(){
 /*ajax*/
 $("#btnInsert").click(function(){
 	
-	
+	var confirm_password = document.getElementById("confirm_password").value;
 	
 	var nombre = $("#nombre").val();
 	var contrasenia= $("#contrasenia").val();
@@ -27,7 +27,7 @@ $("#btnInsert").click(function(){
 	var email =$("#email").val();
 	
 	
-	if(password != confirm_password){
+	if(contrasenia != confirm_password){
 		return false;
 	}else{
 		$.ajax({
