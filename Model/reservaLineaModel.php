@@ -93,7 +93,6 @@ class reservaLineaModel extends reservaLineaClass{
      mysqli_free_result($result);
      $this->CloseConnect();
      return $new;
-<<<<<<< HEAD
      
  } 
 	//Cargar los datos
@@ -126,9 +125,6 @@ class reservaLineaModel extends reservaLineaClass{
         	$this->CloseConnect();  //Cerrar la conexion
 	} */
 	
-=======
- } */
->>>>>>> branch 'Ibai_branch' of https://github.com/Ibaia/Reto-3.git
 	
 	//Insert Reserva
 	public function insert(){
