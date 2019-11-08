@@ -129,11 +129,11 @@ $.ajax({
 	    	$("#table_reserve").empty();
 	    	var newRow="";
 	    	
-	    	newRow +="<tr><th class='col'>ID</th><th class='col'>FECHA DE USO</th><th class='col'>NOMBRE USUARIO</th><th class='col'>APELLIDO USUARIO</th><th class='col'>NUMERO DE TELEFONO</th><th class='col'>DNI</th><th class='col'>PRECIO</th><th class='col'>Ordenadores</th></tr>";
+	    	newRow +="<tr><!--<th class='col'>ID</th>--><th class='col'>FECHA DE USO</th><th class='col'>NOMBRE USUARIO</th><th class='col'>APELLIDO USUARIO</th><th class='col'>NUMERO DE TELEFONO</th><th class='col'>DNI</th><th class='col'>PRECIO</th><th class='col'>Ordenadores</th></tr>";
 	    	$.each(result,function(index,info) { 
 
 	    	newRow += '<tr>'
-	    	newRow += '<td class="col">'+info.idReserva+'</td>'
+	    	//newRow += '<td class="col">'+info.idReserva+'</td>'
 	    	newRow += '<td class="col">'+info.fechaUso+'</td>'
 	    	newRow += '<td class="col">'+info.nombreUsuario+'</td>'
 	    	newRow += '<td class="col">'+info.apellidoUsuario+'</td>'
