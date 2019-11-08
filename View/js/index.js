@@ -4,12 +4,12 @@ $(document).ready(function() {
 	$('#myModal').modal('toggle');
 
 	$("#logout").click(function() {
-		alert("sdfadsf");
+		
 		$.ajax({
 			url : "../Controller/cLogout.php",
 			success : function(result) {
 				alert("Session cerrada");
-				location.reload(true);  //recarga la pagina
+				//location.reload(true);  //recarga la pagina
 			},
 			error : function(result) {
 				alert("error");
