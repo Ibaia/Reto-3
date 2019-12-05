@@ -1,14 +1,8 @@
 <?php
-
-include_once ($_SERVER['DOCUMENT_ROOT']."/"."Reto3/Model/reservaModel.php");
-
+include_once ("../Model/Reserva/reservaModel.php");
 $reserva= new reservaModel();
-$reserva->setList(); 
-
+$reserva->setList();
 $listaReservasJson=$reserva->getListJsonString();
-
 echo $listaReservasJson;
-
 unset ($reserva);
-
 ?>

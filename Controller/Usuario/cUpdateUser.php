@@ -1,8 +1,14 @@
 <?php
-include_once ($_SERVER['DOCUMENT_ROOT']."/Reto 3/Model/Usuario/usuarioModel.php");
 
+include_once ("../../Model/Usuario/usuarioModel.php");
 
 $usuario=new usuarioModel();
+
+$id=filter_input(INPUT_GET,"id");
+if (isset($id))
+{
+    $usuario->setIdUsuario($id);
+}
 
 $nombre=filter_input(INPUT_GET,"nombre");
 if (isset($nombre))
@@ -19,7 +25,6 @@ if (isset($nickName))
 {
     $usuario->setNickName($nickName);
 }
-
 $residencia=filter_input(INPUT_GET,"residencia");
 if (isset($residencia))
 {
@@ -32,26 +37,9 @@ if (isset($email))
     $usuario->setEmail($email);
 }
 
-$resultado=$usuario->insert();
+$resultado=$usuario->Update();
 
-echo $resultado;   // pasar a AJAX el resultado
-
-/*
-$password = document.getElementById("password").value;
-$confirm_password = document.getElementById("confirm_password").value;
-
-
-if(password != confirm_password) {
-    alert("Las contraseñas no coinciden");
-    
-    return false;
-} else {
-    
-    alert("bien");
-    return true;
-}
-*/
-
+echo $resultado;
 
 //header('Location: ../index.php');
 ?>

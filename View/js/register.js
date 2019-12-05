@@ -1,5 +1,5 @@
 
-
+/*
 function validatePassword(){
   var password = document.getElementById("contrasenia").value;
   var confirm_password = document.getElementById("confirm_password").value;
@@ -14,7 +14,7 @@ function validatePassword(){
     alert("bien");
     return true;
   }
-}
+}*/
 
 $(document).ready(function(){
 /*ajax*/

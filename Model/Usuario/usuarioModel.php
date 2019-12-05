@@ -1,22 +1,15 @@
 <?php
+//include_once ("C:\Users\ikaslea/eclipse-workspace\Reto3\Model\connect_data.php");
 include_once ($_SERVER['DOCUMENT_ROOT']."/Reto3/Model/connect_data.php");
-include_once("reservaClass.php");
+include_once("usuarioClass.php");
 
-class reservaModel extends reservaClass{
+class usuarioModel extends usuarioClass{
 	
 	private $link;
-	private $list = array();
-	protected $objectOrdenador;
+	private $list= array();
 	
-	//Getters
-	private function getList(){
-		return $this->list;
-	}
- 	public function getObjectOrdenador(){
-        return $this->objectOrdenador;
- 	}
- 
-	public function OpenConnect(){
+	public function OpenConnect()
+{
     $konDat=new connect_data();
     try
     {
@@ -30,56 +23,58 @@ class reservaModel extends reservaClass{
     }
         $this->link->set_charset("utf8"); // honek behartu egiten du aplikazio eta 
         //                  //databasearen artean UTF -8 erabiltzera datuak trukatzeko
-	}                   
+}                   
  
  public function CloseConnect()
  {
      mysqli_close ($this->link);
  }
  
+ 
+	private function getList(){
+		return $this->list;
+	}
+	
 	//Cargar los datos
 	public function setList(){
 		
 		$this->OpenConnect(); // Abrir la conexion
 		
-		$sql= "call spAllReservas()";
+		$sql= "call spAllUsers()";
 		
 		$result = $this->link->query($sql); //Almacena los datos recibidos de la llamada a la base de datos
 		
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			
-			$reserva= new reservaClass();
+			$user= new usuarioClass();
 			
-			$reserva->setFechaReserva($row['fechaReserva']);
-			$reserva->setFechaUso($row['fechaUso']);
-			$reserva->setNombreUsuario($row['nombreUsuario']);
-			$reserva->setApellidoUsuario($row['apellidoUsuario']);
-			$reserva->setNumTel($row['numTel']);
-			$reserva->setDni($row['DNI']);
-			$reserva->setPrecioTotal($row['precioTotal']);
-					
-			array_push($this->list, $reserva);
+			$user->setIdUsuario($row['id']);
+			$user->setNombre($row['nombre']);
+			$user->setContrasenia($row['contrasenia']);
+			$user->setNickName($row['nickName']);
+			$user->setResidencia($row['residencia']);
+			$user->setEmail($row['email']);
+			
+			 array_push($this->list, $user);
 		}
-		
-		    mysqli_free_result($result);
-		    unset($reserva);
+		        mysqli_free_result($result);
         	$this->CloseConnect();  //Cerrar la conexion
 	}
 	
-	
-	//Insert Reserva
+	//Insert Usuarios
 	public function insert(){
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-			$reservaFecha->setFechaUso($row['fechaUso']);
-			$reservaNombre->setNombreUsuario($row['nombreUsuario']);
-			$reservaApellido->setApellidoUsuario($row['apellidoUsuario']);
-			$reservaNumTel->setNumTel($row['numTel']);
-			$reservaDni->setDni($row['DNI']);
-			$reservaPrecio->setPrecioTotal($row['precioTotal']);
+        
+        
+        $nombreInsert=$this->getNombre();
+		$contraseniaInsert=$this->getContrasenia();
+		$nickNameInsert=$this->getNickName();
+		$residenciaInsert=$this->getResidencia();
+		$emailInsert=$this->getEmail();
 
-        $sql="CALL spInsertUser('$reservaFecha','$reservaNombre','$reservaApellido','$reservaNumTel','$reservaDni',$reservaPrecio)";
+        $sql="CALL spInsertUser('$nombreInsert','$contraseniaInsert','$nickNameInsert','$residenciaInsert','$emailInsert')";
         
         $numFilas=$this->link->query($sql);
         
@@ -91,7 +86,7 @@ class reservaModel extends reservaClass{
         
         $this->CloseConnect();
     }
-	/*
+	
 	//Delete Usuarios
    	public function delete(){
         
@@ -118,41 +113,41 @@ class reservaModel extends reservaClass{
         
         $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        
+        $idUpdate=$this->getIdUsuario();
         $nombreUpdate=$this->getNombre();
 		$contraseniaUpdate=$this->getContrasenia();
 		$nickNameUpdate=$this->getNickName();
 		$residenciaUpdate=$this->getResidencia();
 		$emailUpdate=$this->getEmail();
-		$numTelUpdate=$this->getNumTel();
+		
 
-        $sql="CALL spUpdateUser('$nombreUpdate','$contraseniaUpdate','$nickNameUpdate','$residenciaUpdate','$emailUpdate',$numTelUpdate)";
+        $sql="CALL spUpdateUser('$idUpdate','$nombreUpdate','$contraseniaUpdate','$nickNameUpdate','$residenciaUpdate','$emailUpdate')";
         
         $numFilas=$this->link->query($sql);
         
         if ($numFilas>=1){
-            return "insertado";
+            return "cambiado";
         } else {
-            return "Error al insertar";
+            return "Error al cambiar".$sql.print_r($numFilas,true);
         }
         
         $this->CloseConnect();
-    }*/
-	
+    }
+   
+    
+    
     function getListJsonString() {//if Class attributes PROTECTED
         
         // returns the list of objects in a srting with JSON format
         // Atributtes don't must be PUBLICs, they can be PRIVATE or PROTECTED
         $arr=array();
         
-        foreach ($this->list as $objectReserva)
+        foreach ($this->list as $object)
         {
-            $vars = get_object_vars($objectReserva);
+            $vars = get_object_vars($object);
             
             array_push($arr, $vars);
         }
         return json_encode($arr);
     }
 }
-
-?>

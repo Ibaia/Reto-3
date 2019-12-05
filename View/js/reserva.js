@@ -90,7 +90,7 @@ $(document).ready(function () {
                     var idIl = 0;
                     /* añade el ordenador al dropdown y le cambia el color a naranja 'marcado'*/
                     if($('.dropdown-menu li').length==0){
-                        $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img src="../view/img/quit.png" /></a></li>');
+                        $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img src="../img/quit.png" /></a></li>');
                         $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
                         slide_stop(); /* stop */
                     }else{
@@ -108,7 +108,7 @@ $(document).ready(function () {
                         /* si no, lo añade al dropdown y le cambia el color a naranja 'marcado' */
                         if(mensaje == true){
                             $('.text:eq('+(idImg-1)+')').css('background-color', 'orange');
-                            $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img href="#" src="../view/img/quit.png" /></a></li>');
+                            $('.dropdown-menu').append('<li id="'+idImg+'"><a href="#">Ordenador Nº'+idImg+'</a><a href="#" class="quit"><img href="#" src="../img/quit.png" /></a></li>');
                         }else{
                             alert("El ordenador ya ha sido seleccionado anteriormente");
                         }
